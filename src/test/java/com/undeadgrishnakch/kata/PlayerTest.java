@@ -1,6 +1,7 @@
 package com.undeadgrishnakch.kata;
 
 import com.undeadgrishnakch.kata.exception.BadPlayer;
+import com.undeadgrishnakch.kata.game.Player;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;

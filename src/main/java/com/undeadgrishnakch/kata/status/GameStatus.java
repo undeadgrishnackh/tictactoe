@@ -1,0 +1,11 @@
+package com.undeadgrishnakch.kata.status;
+
+/**
+ * Created by michele.brissoni@ibm.com on 29/07/2017.
+ */
+public class GameStatus {
+    public static final String IN_PROGRESS = "in progress...";
+    public static final String PLAYER_X_WON = "PLAYER X WON";
+    public static final String PLAYER_O_WON = "PLAYER O WON";
+    public static final String DRAW = "GAME ENDS WITH A DRAW!";
+}

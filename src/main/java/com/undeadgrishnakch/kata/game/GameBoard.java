@@ -1,11 +1,11 @@
-package com.undeadgrishnakch.kata;
+package com.undeadgrishnakch.kata.game;
 
 /**
  * GameBoard class
  * Private class to model the GameBoard
  * Created by michele.brissoni@ibm.com on 23/07/2017.
  */
-class GameBoard {
+public class GameBoard {
 
     public GameBoard() {
     }
