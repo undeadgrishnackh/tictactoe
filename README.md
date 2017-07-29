@@ -1,2 +1,3 @@
-# com.undeadgrishnakch.kata.TicTacToe
-TDD classroom example
+## com.undeadgrishnakch.kata.TicTacToe
+----
+# TDD classroom example
