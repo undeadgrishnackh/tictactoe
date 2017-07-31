@@ -2,6 +2,7 @@ package com.undeadgrishnakch.kata.exception;
 
 import com.undeadgrishnakch.kata.TicTacToe;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -17,6 +18,7 @@ class BadMoveTest {
        this.ticTacToe = new TicTacToe();
     }
 
+    @DisplayName("playerX Move on a Bad Round")
     @Test
     void playerXMoveBadRound() throws BadMove, BadPlayer {
         Throwable exception = assertThrows(BadMove.class, () -> {
@@ -29,8 +31,18 @@ class BadMoveTest {
                 () -> assertThrows(BadMove.class, () -> this.ticTacToe.move("X",1,2)));
     }
 
+    @DisplayName("playerO Move on a Bad Round")
     @Test
-    void playerOMoveBadRound() {
+    void playerOMoveBadRound() throws BadMove, BadPlayer{
+        Throwable exception = assertThrows(BadMove.class, () -> {
+            throw new BadMove("Isn't your round player O");
+        });
+
+        this.ticTacToe.move("X",1,1);
+        this.ticTacToe.move("O",2,1);
+        assertAll("Bad Player round",
+                () -> assertEquals("Isn't your round player O", exception.getMessage()),
+                () -> assertThrows(BadMove.class, () -> this.ticTacToe.move("O",1,2)));
     }
 
     @Test

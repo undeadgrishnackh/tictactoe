@@ -26,7 +26,7 @@ class TicTacToeTest {
         assertEquals("O", new TicTacToe().getPlayerName(1).getName());
     }
 
-    @DisplayName("Player X won with a vertical line")
+    @DisplayName("BDD - Player X won with a vertical line")
     @Test
     void playerXWonWithVertical () throws BadPlayer, BadMove {
         TicTacToe ticTacToe = new TicTacToe();
