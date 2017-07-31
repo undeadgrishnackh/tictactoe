@@ -17,11 +17,13 @@ public class TicTacToe {
     private GameBoard gameBoard = null;
     private final Player[] players = new Player[2];
     private final String gameResult = GameStatus.IN_PROGRESS;
+    private Player round = null;
 
     public TicTacToe() throws BadPlayer {
         this.gameBoard = new GameBoard();
-        this.players[0] = new Player("X");
-        this.players[1] = new Player("O");
+        this.players[0] = new Player("X", this);
+        this.players[1] = new Player("O", this);
+        this.round = this.players[0];
     }
 
     public String showGameBoard(){
@@ -35,12 +37,41 @@ public class TicTacToe {
         } else throw new BadPlayer("The selected Player doesn't exist!");
     }
 
-    public void move(String player, int row, int column) throws BadMove {
-        GameRules.move(player,row,column);
+    public void move(String player, int row, int column) throws BadMove, BadPlayer {
+        //TODO: the game rules for the moment is static
+        GameRules.move(this.getPlayer(player),row,column);
+        nextRound();
+    }
+
+    private Player getPlayer(String player) throws BadPlayer {
+        switch (player) {
+            case "X":
+                return this.players[0];
+            case "O":
+                return this.players[1];
+            default:
+                throw new BadPlayer("The player " + player + " doesn't exit!");
+        }
     }
 
     public String getGameResult() {
         return this.gameResult;
+    }
+
+    public boolean isYourRound(Player player) {
+        if ( player.getName().equals(this.getRound().getName())) {
+            return true;
+        } else return false;
+    }
+
+    public Player getRound() {
+        return round;
+    }
+
+    public void nextRound(){
+        if (getRound() == this.players[0]) {
+            this.round = this.players[1];
+        } else this.round = this.players[0];
     }
 
     /*public static void main(String[] args) {

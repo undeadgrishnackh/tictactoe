@@ -7,7 +7,10 @@ import com.undeadgrishnakch.kata.exception.BadMove;
  */
 public class GameRules {
 
-    public static void move(String player, int row, int column) throws BadMove {
+    public static boolean move(Player player, int row, int column) throws BadMove {
         //TODO: the UAT BadMoves engine is ready. Now is time to implement the rules code after the red tests.
+        if (player.getGame().isYourRound(player)){
+            return true;
+        } else throw new BadMove("Isn't your round player " + player.getName());
     }
 }
