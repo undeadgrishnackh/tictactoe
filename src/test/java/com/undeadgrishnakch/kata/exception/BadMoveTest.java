@@ -45,8 +45,20 @@ class BadMoveTest {
                 () -> assertThrows(BadMove.class, () -> this.ticTacToe.move("O",1,2)));
     }
 
+    @DisplayName("Player Move outside the game board")
     @Test
     void playerMoveOutOfGameBoard() {
+        Throwable exception = assertThrows(BadMove.class, () -> {
+            throw new BadMove("You tried to move outside the game board!");
+        });
+
+        assertAll("Player move outside the game board",
+                () -> assertEquals("You tried to move outside the game board!", exception.getMessage()),
+                () -> assertThrows(BadMove.class, () -> this.ticTacToe.move("X",4,4)),
+                () -> assertThrows(BadMove.class, () -> this.ticTacToe.move("X",0,0)),
+                () -> assertThrows(BadMove.class, () -> this.ticTacToe.move("X",0,4)),
+                () -> assertThrows(BadMove.class, () -> this.ticTacToe.move("X",4,0)),
+                () -> assertThrows(BadMove.class, () -> this.ticTacToe.move("X",-1,-1)));
     }
 
     @Test

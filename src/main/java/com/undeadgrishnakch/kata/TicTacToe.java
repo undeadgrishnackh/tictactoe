@@ -74,6 +74,10 @@ public class TicTacToe {
         } else this.round = this.players[0];
     }
 
+    public boolean moveAllowed(int row, int column) {
+        return this.gameBoard.isTheCellIntoTheGame(row, column);
+    }
+
     /*public static void main(String[] args) {
         TicTacToe ticTacToe = new TicTacToe();
         ticTacToe.showGameBoard();
