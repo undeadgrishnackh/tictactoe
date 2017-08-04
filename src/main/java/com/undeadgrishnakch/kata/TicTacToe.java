@@ -27,7 +27,7 @@ public class TicTacToe {
     }
 
     public String showGameBoard(){
-        return this.gameBoard.getGameBoard();
+        return this.gameBoard.displayGameBoard();
     }
 
 
@@ -41,6 +41,7 @@ public class TicTacToe {
         //TODO: the game rules for the moment is static
         GameRules.move(this.getPlayer(player),row,column);
         nextRound();
+        System.out.println(gameBoard.displayGameBoard());
     }
 
     private Player getPlayer(String player) throws BadPlayer {
@@ -76,6 +77,10 @@ public class TicTacToe {
 
     public boolean moveAllowed(int row, int column) {
         return this.gameBoard.isTheCellIntoTheGame(row, column);
+    }
+
+    public GameBoard getGameBoard() {
+        return gameBoard;
     }
 
     /*public static void main(String[] args) {

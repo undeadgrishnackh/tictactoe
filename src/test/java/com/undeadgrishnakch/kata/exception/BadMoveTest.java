@@ -1,9 +1,7 @@
 package com.undeadgrishnakch.kata.exception;
 
 import com.undeadgrishnakch.kata.TicTacToe;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -17,6 +15,7 @@ class BadMoveTest {
     void setUp() throws BadPlayer {
        this.ticTacToe = new TicTacToe();
     }
+
 
     @DisplayName("playerX Move on a Bad Round")
     @Test
@@ -61,12 +60,31 @@ class BadMoveTest {
                 () -> assertThrows(BadMove.class, () -> this.ticTacToe.move("X",-1,-1)));
     }
 
+    @DisplayName("Player X move on not empty slot")
     @Test
-    void playerXMoveOverO() {
+    void playerXMoveOverO() throws BadMove, BadPlayer {
+        Throwable exception = assertThrows(BadMove.class, () -> {
+            throw new BadMove("You tried to move over a not empty slot!");
+        });
+
+        this.ticTacToe.move("X",1,1);
+        this.ticTacToe.move("O",2,2);
+        assertAll("Player move on a not empty slot",
+                () -> assertEquals("You tried to move over a not empty slot!", exception.getMessage()),
+                () -> assertThrows(BadMove.class, () -> this.ticTacToe.move("X",2,2)));
     }
 
+    @DisplayName("Player O move on not empty slot")
     @Test
-    void playerOMoveOverX() {
+    void playerOMoveOverX() throws BadMove, BadPlayer {
+        Throwable exception = assertThrows(BadMove.class, () -> {
+            throw new BadMove("You tried to move over a not empty slot!");
+        });
+
+        this.ticTacToe.move("X",1,1);
+        assertAll("Player move on a not empty slot",
+                () -> assertEquals("You tried to move over a not empty slot!", exception.getMessage()),
+                () -> assertThrows(BadMove.class, () -> this.ticTacToe.move("O",1,1)));
     }
 
 }

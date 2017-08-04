@@ -13,6 +13,6 @@ class GameBoardTest {
     @DisplayName("Empty Game Board Creation")
     @Test
     void createGameBoard() throws BadPlayer {
-        assertEquals(" | | \n-+-+-\n | | \n-+-+-\n | | ", new TicTacToe().showGameBoard());
+        assertEquals(" | | \n-+-+-\n | | \n-+-+-\n | | \n", new TicTacToe().showGameBoard());
     }
 }

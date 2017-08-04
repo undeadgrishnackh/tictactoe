@@ -18,8 +18,13 @@ public class GameRules {
         if (!ticTacToe.moveAllowed(row, column))
             throw new BadMove("You tried to move outside the game board!");
 
-        //TODO: manage move over a busy cell
+        //TODO: manage move over a not empty cell
+        if (!ticTacToe.getGameBoard().isTheCellEmpty(row,column))
+            throw new BadMove("You tried to move over a not empty slot!");
 
+        player.getGame().getGameBoard().setGameboardCell(player,row, column);
+
+        //TODO: techdebt - refactor return boolean
         return true;
     }
 }

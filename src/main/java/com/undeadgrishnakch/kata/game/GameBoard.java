@@ -1,5 +1,7 @@
 package com.undeadgrishnakch.kata.game;
 
+import com.undeadgrishnakch.kata.exception.BadMove;
+
 /**
  * GameBoard class
  * Private class to model the GameBoard
@@ -8,13 +10,33 @@ package com.undeadgrishnakch.kata.game;
 public class GameBoard {
     int rows = 3;
     int columns = 3;
-    String gameboard[][] = new String[3][3];
+    String gameboard[][] = {{" "," "," "},{" "," "," "},{" "," "," "}}; //new String[3][3];
 
     public GameBoard() {
     }
 
-    public String getGameBoard(){
-        return " | | \n-+-+-\n | | \n-+-+-\n | | ";
+
+    public String getGameboardCell(int row, int column) {
+        return gameboard[row-1][column-1];
+    }
+
+    public void setGameboardCell(Player player, int row, int column) {
+        this.gameboard[row-1][column-1] = player.getName();
+    }
+
+
+    public String displayGameBoard(){
+        return getGameboardCell(1,1) + "|" +
+                getGameboardCell(1,2) + "|" +
+                getGameboardCell(1,3) +
+                "\n-+-+-\n" +
+                getGameboardCell(2,1) + "|" +
+                getGameboardCell(2,2) + "|" +
+                getGameboardCell(2,3) +
+                "\n-+-+-\n" +
+                getGameboardCell(3,1) + "|" +
+                getGameboardCell(3,2) + "|" +
+                getGameboardCell(3,3) + "\n";
     }
 
     public boolean isTheCellIntoTheGame(int row, int column) {
@@ -22,4 +44,13 @@ public class GameBoard {
             return true;
         } else return false;
     }
+
+    public boolean isTheCellEmpty(int row, int column) throws BadMove {
+        if (isTheCellIntoTheGame( row,  column)){
+            if (getGameboardCell(row,column).equals(" ")){
+                return true;
+            } else return false;
+        } else throw new BadMove("Move out of the game!");  //TODO: techdebt - refactor throw mechanism above
+    }
+
 }

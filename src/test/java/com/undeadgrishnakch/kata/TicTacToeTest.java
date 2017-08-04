@@ -3,6 +3,7 @@ package com.undeadgrishnakch.kata;
 import com.undeadgrishnakch.kata.exception.BadMove;
 import com.undeadgrishnakch.kata.exception.BadPlayer;
 import com.undeadgrishnakch.kata.status.GameStatus;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -26,6 +27,7 @@ class TicTacToeTest {
         assertEquals("O", new TicTacToe().getPlayerName(1).getName());
     }
 
+    @Disabled
     @DisplayName("BDD - Player X won with a vertical line")
     @Test
     void playerXWonWithVertical () throws BadPlayer, BadMove {
