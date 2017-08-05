@@ -15,12 +15,13 @@ import com.undeadgrishnakch.kata.status.GameStatus;
  */
 public class TicTacToe {
     private GameBoard gameBoard = null;
+    private GameStatus gameStatus = null;
     private final Player[] players = new Player[2];
-    private final String gameResult = GameStatus.IN_PROGRESS;
     private Player round = null;
 
     public TicTacToe() throws BadPlayer {
         this.gameBoard = new GameBoard();
+        this.gameStatus = new GameStatus();
         this.players[0] = new Player("X", this);
         this.players[1] = new Player("O", this);
         this.round = this.players[0];
@@ -38,10 +39,13 @@ public class TicTacToe {
     }
 
     public void move(String player, int row, int column) throws BadMove, BadPlayer {
-        //TODO: the game rules for the moment is static
+        //TODO: 1 - the game rules for the moment is static
+        //TODO: 2 - check with UAT move after game end!
         GameRules.move(this.getPlayer(player),row,column);
-        nextRound();
-        System.out.println(gameBoard.displayGameBoard());
+        if (!GameRules.isGameOver(this.getPlayer(player))){
+            nextRound();
+        }
+        System.out.println(gameBoard.displayGameBoard() + getGameResult() + "\n");
     }
 
     private Player getPlayer(String player) throws BadPlayer {
@@ -53,10 +57,6 @@ public class TicTacToe {
             default:
                 throw new BadPlayer("The player " + player + " doesn't exit!");
         }
-    }
-
-    public String getGameResult() {
-        return this.gameResult;
     }
 
     public boolean isYourRound(Player player) {
@@ -81,6 +81,14 @@ public class TicTacToe {
 
     public GameBoard getGameBoard() {
         return gameBoard;
+    }
+
+    public String getGameResult() {
+        return this.gameStatus.getGameResult();
+    }
+
+    public void setGameResult(String status) {
+        this.gameStatus.setGameResult(status);
     }
 
     /*public static void main(String[] args) {

@@ -27,7 +27,6 @@ class TicTacToeTest {
         assertEquals("O", new TicTacToe().getPlayerName(1).getName());
     }
 
-    @Disabled
     @DisplayName("BDD - Player X won with a vertical line")
     @Test
     void playerXWonWithVertical () throws BadPlayer, BadMove {
@@ -42,5 +41,41 @@ class TicTacToeTest {
         assertEquals(GameStatus.IN_PROGRESS, ticTacToe.getGameResult());
         ticTacToe.move("X",3,1);
         assertEquals(GameStatus.PLAYER_X_WON, ticTacToe.getGameResult());
+    }
+
+    @DisplayName("BDD - Player O won with a vertical line")
+    @Test
+    void playerOWonWithVertical () throws BadPlayer, BadMove {
+        TicTacToe ticTacToe = new TicTacToe();
+        ticTacToe.move("X",1,1);
+        assertEquals(GameStatus.IN_PROGRESS, ticTacToe.getGameResult());
+        ticTacToe.move("O",1,2);
+        assertEquals(GameStatus.IN_PROGRESS, ticTacToe.getGameResult());
+        ticTacToe.move("X",1,3);
+        assertEquals(GameStatus.IN_PROGRESS, ticTacToe.getGameResult());
+        ticTacToe.move("O",2,2);
+        assertEquals(GameStatus.IN_PROGRESS, ticTacToe.getGameResult());
+        ticTacToe.move("X",3,3);
+        assertEquals(GameStatus.IN_PROGRESS, ticTacToe.getGameResult());
+        ticTacToe.move("O",3,2);
+        assertEquals(GameStatus.PLAYER_O_WON, ticTacToe.getGameResult());
+    }
+
+    @Disabled
+    @DisplayName("BDD - Player X won with a horizontal line")
+    @Test
+    void playerXWonWithHorizontal () throws BadPlayer, BadMove {
+    }
+
+    @Disabled
+    @DisplayName("BDD - Player O won with a horizontal line")
+    @Test
+    void playerOWonWithHorizontal () throws BadPlayer, BadMove {
+    }
+
+    @Disabled
+    @DisplayName("BDD - Draw")
+    @Test
+    void draw () throws BadPlayer, BadMove {
     }
 }

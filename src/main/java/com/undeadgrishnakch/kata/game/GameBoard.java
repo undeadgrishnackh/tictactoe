@@ -53,4 +53,14 @@ public class GameBoard {
         } else throw new BadMove("Move out of the game!");  //TODO: techdebt - refactor throw mechanism above
     }
 
+    public boolean isVerticalWon(Player player) {
+        for (int col = 1; col <= this.columns; col++) {
+            if (    getGameboardCell(1,col).equals(player.getName()) &&
+                    getGameboardCell(2,col).equals(player.getName()) &&
+                    getGameboardCell(3,col).equals(player.getName())) {
+                return true;
+            }
+        }
+        return false;
+    }
 }
