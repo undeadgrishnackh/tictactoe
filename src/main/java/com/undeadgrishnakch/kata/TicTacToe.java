@@ -31,13 +31,6 @@ public class TicTacToe {
         return this.gameBoard.displayGameBoard();
     }
 
-
-    public Player getPlayerName(int i) throws BadPlayer {
-        if (i == 0 || i == 1){
-            return this.players[i];
-        } else throw new BadPlayer("The selected Player doesn't exist!");
-    }
-
     public void move(String player, int row, int column) throws BadMove, BadPlayer {
         //TODO: 1 - the game rules for the moment is static
         //TODO: 2 - check with UAT move after game end!
@@ -60,16 +53,14 @@ public class TicTacToe {
     }
 
     public boolean isYourRound(Player player) {
-        if ( player.getName().equals(this.getRound().getName())) {
-            return true;
-        } else return false;
+        return player.getName().equals(this.getRound().getName());
     }
 
-    public Player getRound() {
+    private Player getRound() {
         return round;
     }
 
-    public void nextRound(){
+    private void nextRound(){
         if (getRound() == this.players[0]) {
             this.round = this.players[1];
         } else this.round = this.players[0];

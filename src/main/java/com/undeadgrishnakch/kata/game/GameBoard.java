@@ -8,19 +8,19 @@ import com.undeadgrishnakch.kata.exception.BadMove;
  * Created by michele.brissoni@ibm.com on 23/07/2017.
  */
 public class GameBoard {
-    int rows = 3;
-    int columns = 3;
-    String gameboard[][] = {{" "," "," "},{" "," "," "},{" "," "," "}}; //new String[3][3];
+    static private final int rows = 3;
+    static private final int columns = 3;
+    private final String gameboard[][] = {{" "," "," "},{" "," "," "},{" "," "," "}};
 
     public GameBoard() {
     }
 
 
-    public String getGameboardCell(int row, int column) {
+    private String getGameboardCell(int row, int column) {
         return gameboard[row-1][column-1];
     }
 
-    public void setGameboardCell(Player player, int row, int column) {
+    void setGameboardCell(Player player, int row, int column) {
         this.gameboard[row-1][column-1] = player.getName();
     }
 
@@ -40,21 +40,17 @@ public class GameBoard {
     }
 
     public boolean isTheCellIntoTheGame(int row, int column) {
-        if (row >= 1 && row <= this.rows && column >= 1 && column <= columns){
-            return true;
-        } else return false;
+        return row >= 1 && row <= rows && column >= 1 && column <= columns;
     }
 
     public boolean isTheCellEmpty(int row, int column) throws BadMove {
         if (isTheCellIntoTheGame( row,  column)){
-            if (getGameboardCell(row,column).equals(" ")){
-                return true;
-            } else return false;
+            return getGameboardCell(row, column).equals(" ");
         } else throw new BadMove("Move out of the game!");  //TODO: techdebt - refactor throw mechanism above
     }
 
     public boolean isVerticalWon(Player player) {
-        for (int col = 1; col <= this.columns; col++) {
+        for (int col = 1; col <= columns; col++) {
             if (    getGameboardCell(1,col).equals(player.getName()) &&
                     getGameboardCell(2,col).equals(player.getName()) &&
                     getGameboardCell(3,col).equals(player.getName())) {
