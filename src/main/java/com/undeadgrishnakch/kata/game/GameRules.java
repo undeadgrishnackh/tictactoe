@@ -10,6 +10,7 @@ import com.undeadgrishnakch.kata.status.GameStatus;
  * 3- game over and final status
  * Created by michele.brissoni@ibm.com on 29/07/2017.
  */
+//TODO: techdebt -- Create the constructor to improve tests and link to the game instance.
 public class GameRules {
 
     public static void move(Player player,  int row, int column) throws BadMove {
@@ -30,22 +31,28 @@ public class GameRules {
         GameBoard gameboard = player.getGame().getGameBoard();
         if (gameboard.isVerticalWon(player)){
             return setGameStatusToVictory(player);
-        } else if (gameboard.isHorizontalWon(player)){
+        }
+
+        if (gameboard.isHorizontalWon(player)){
             return setGameStatusToVictory(player);
         }
+
+        if (gameboard.isDiagonalWon(player)){
+            return setGameStatusToVictory(player);
+        }
+
         return false;
     }
 
     /* --------------------------------------------------------------------------------- */
 
     private static boolean setGameStatusToVictory(Player player) {
-        switch (player.getName()) {
-            case "X":
-                setGameResult(player, GameStatus.PLAYER_X_WON);
-                return true;
-            default:
-                setGameResult(player, GameStatus.PLAYER_O_WON);
-                return true;
+        if (player.getName().equals("X")) {
+            setGameResult(player, GameStatus.PLAYER_X_WON);
+            return true;
+        } else {
+            setGameResult(player, GameStatus.PLAYER_O_WON);
+            return true;
         }
     }
 

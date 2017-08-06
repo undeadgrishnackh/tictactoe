@@ -24,7 +24,6 @@ class GameRulesTest {
         this.ticTacToe = new TicTacToe();
     }
 
-
     @DisplayName("playerX Move on a Bad Round")
     @Test
     void playerXMoveBadRound() throws BadMove, BadPlayer {

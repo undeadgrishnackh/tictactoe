@@ -75,6 +75,33 @@ class TicTacToeTest {
     }
 
     @Disabled
+    @DisplayName("BDD - Player X Won With Diagonal")
+    @Test
+    void playerXWonWithDiagonal () throws BadPlayer, BadMove {
+        assertEquals(GameStatus.IN_PROGRESS, ticTacToe.getGameResult());
+        ticTacToe.move("X",1,1);
+        ticTacToe.move("O",1,2);
+        ticTacToe.move("X",2,2);
+        ticTacToe.move("O",2,3);
+        ticTacToe.move("X",3,3);
+        assertEquals(GameStatus.PLAYER_X_WON, ticTacToe.getGameResult());
+    }
+
+    @Disabled
+    @DisplayName("BDD - Player O Won With Diagonal")
+    @Test
+    void playerOWonWithDiagonal () throws BadPlayer, BadMove {
+        assertEquals(GameStatus.IN_PROGRESS, ticTacToe.getGameResult());
+        ticTacToe.move("X",1,1);
+        ticTacToe.move("O",2,2);
+        ticTacToe.move("X",1,2);
+        ticTacToe.move("O",1,3);
+        ticTacToe.move("X",3,3);
+        ticTacToe.move("O",3,1);
+        assertEquals(GameStatus.PLAYER_O_WON, ticTacToe.getGameResult());
+    }
+
+    @Disabled
     @DisplayName("BDD - Draw")
     @Test
     void draw () throws BadPlayer, BadMove {

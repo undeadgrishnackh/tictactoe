@@ -11,11 +11,18 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <java.version>1.8</java.version>
+        <!-- JUNIT 5-->
         <junit.version>4.12</junit.version>
         <junit.jupiter.version>5.0.0-M6</junit.jupiter.version>
         <junit.vintage.version>${junit.version}.0-M6</junit.vintage.version>
         <junit.platform.version>1.0.0-M6</junit.platform.version>
         <maven-compiler-plugin.version>3.6.1</maven-compiler-plugin.version>
+        <!-- Sonar -->
+        <sonar.java.coveragePlugin>jacoco</sonar.java.coveragePlugin>
+        <sonar.dynamicAnalysis>reuseReports</sonar.dynamicAnalysis>
+        <sonar.jacoco.reportPath>${project.basedir}/../target/jacoco.exec</sonar.jacoco.reportPath>
+        <sonar.language>java</sonar.language>
+        <sonar.jacoco.version>0.7.9</sonar.jacoco.version>
     </properties>
 
     
@@ -96,6 +103,23 @@
                         <version>${junit.platform.version}</version>
                     </dependency>
                 </dependencies>
+            </plugin>
+            <plugin>
+                <groupId>org.jacoco</groupId>
+                <artifactId>jacoco-maven-plugin</artifactId>
+                <version>${sonar.jacoco.version}</version>
+                <configuration>
+                    <destFile>${sonar.jacoco.reportPath}</destFile>
+                    <append>true</append>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>prepare-agent</id>
+                        <goals>
+                            <goal>prepare-agent</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>

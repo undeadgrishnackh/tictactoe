@@ -73,4 +73,19 @@ public class GameBoard {
         }
         return false;
     }
+
+    public boolean isDiagonalWon(Player player) {
+        if (    getGameBoardCell(1,1).equals(player.getName()) &&
+                getGameBoardCell(2,2).equals(player.getName()) &&
+                getGameBoardCell(3,3).equals(player.getName())) {
+            return true;
+        }
+
+        if (    getGameBoardCell(1,3).equals(player.getName()) &&
+                getGameBoardCell(2,2).equals(player.getName()) &&
+                getGameBoardCell(3,1).equals(player.getName())) {
+            return true;
+        }
+        return false;
+    }
 }
