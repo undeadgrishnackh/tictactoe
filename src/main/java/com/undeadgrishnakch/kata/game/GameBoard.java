@@ -88,4 +88,15 @@ public class GameBoard {
         }
         return false;
     }
+
+    public boolean isDraw(Player player) {
+        for (int col = 1; col <= columns; col++) {
+            for (int row = 1; row <= rows; row++) {
+                if (getGameBoardCell(row, col).equals(" ")) {
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
 }

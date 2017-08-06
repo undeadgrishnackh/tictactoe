@@ -4,7 +4,6 @@ import com.undeadgrishnakch.kata.exception.BadMove;
 import com.undeadgrishnakch.kata.exception.BadPlayer;
 import com.undeadgrishnakch.kata.status.GameStatus;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -74,7 +73,6 @@ class TicTacToeTest {
         assertEquals(GameStatus.PLAYER_O_WON, ticTacToe.getGameResult());
     }
 
-    @Disabled
     @DisplayName("BDD - Player X Won With Diagonal")
     @Test
     void playerXWonWithDiagonal () throws BadPlayer, BadMove {
@@ -87,7 +85,6 @@ class TicTacToeTest {
         assertEquals(GameStatus.PLAYER_X_WON, ticTacToe.getGameResult());
     }
 
-    @Disabled
     @DisplayName("BDD - Player O Won With Diagonal")
     @Test
     void playerOWonWithDiagonal () throws BadPlayer, BadMove {
@@ -101,9 +98,19 @@ class TicTacToeTest {
         assertEquals(GameStatus.PLAYER_O_WON, ticTacToe.getGameResult());
     }
 
-    @Disabled
     @DisplayName("BDD - Draw")
     @Test
     void draw () throws BadPlayer, BadMove {
+        assertEquals(GameStatus.IN_PROGRESS, ticTacToe.getGameResult());
+        ticTacToe.move("X",1,1);
+        ticTacToe.move("O",1,2);
+        ticTacToe.move("X",1,3);
+        ticTacToe.move("O",2,2);
+        ticTacToe.move("X",2,1);
+        ticTacToe.move("O",2,3);
+        ticTacToe.move("X",3,2);
+        ticTacToe.move("O",3,1);
+        ticTacToe.move("X",3,3);
+        assertEquals(GameStatus.DRAW, ticTacToe.getGameResult());
     }
 }

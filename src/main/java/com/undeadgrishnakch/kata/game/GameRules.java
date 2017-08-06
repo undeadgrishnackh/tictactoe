@@ -41,10 +41,19 @@ public class GameRules {
             return setGameStatusToVictory(player);
         }
 
+        if (gameboard.isDraw(player)){
+            return setGameStatusToDraw(player);
+        }
+
         return false;
     }
 
     /* --------------------------------------------------------------------------------- */
+
+    private static boolean setGameStatusToDraw(Player player) {
+        setGameResult(player, GameStatus.DRAW);
+        return true;
+    }
 
     private static boolean setGameStatusToVictory(Player player) {
         if (player.getName().equals("X")) {
