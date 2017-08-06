@@ -1,7 +1,6 @@
-package com.undeadgrishnakch.kata;
+package com.undeadgrishnakch.kata.game;
 
 import com.undeadgrishnakch.kata.exception.BadPlayer;
-import com.undeadgrishnakch.kata.game.Player;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -10,6 +9,8 @@ import org.junit.jupiter.params.provider.ValueSource;
 import static org.junit.jupiter.api.Assertions.*;
 
 /**
+ * UNIT TEST class to build the player mechanics.
+ *
  * Created by michele.brissoni@ibm.com on 29/07/2017.
  */
 class PlayerTest {

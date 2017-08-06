@@ -1,19 +1,27 @@
-package com.undeadgrishnakch.kata.exception;
+package com.undeadgrishnakch.kata.game;
 
 import com.undeadgrishnakch.kata.TicTacToe;
-import org.junit.jupiter.api.*;
+import com.undeadgrishnakch.kata.exception.BadMove;
+import com.undeadgrishnakch.kata.exception.BadPlayer;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertAll;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 /**
- * Created by michele.brissoni@ibm.com on 29/07/2017.
+ * UNIT Test class to build the game rules logic.
+ *
+ * Created by michele.brissoni@ibm.com on 06/08/2017.
  */
-class BadMoveTest {
+class GameRulesTest {
     private TicTacToe ticTacToe = null;
 
     @BeforeEach
     void setUp() throws BadPlayer {
-       this.ticTacToe = new TicTacToe();
+        this.ticTacToe = new TicTacToe();
     }
 
 

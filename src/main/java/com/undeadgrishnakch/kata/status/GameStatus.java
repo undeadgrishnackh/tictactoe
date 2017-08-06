@@ -1,6 +1,8 @@
 package com.undeadgrishnakch.kata.status;
 
 /**
+ * Game sub class that define the possible game status.
+ *
  * Created by michele.brissoni@ibm.com on 29/07/2017.
  */
 public class GameStatus {

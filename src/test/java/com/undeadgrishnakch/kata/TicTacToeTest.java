@@ -11,7 +11,7 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 /**
- * TDD Test class to build the tic tac toe kata.
+ * BDD Test class to check the overall game
  *
  * Created by michele.brissoni@ibm.com on 23/07/2017.
  */
@@ -27,14 +27,11 @@ class TicTacToeTest {
     @DisplayName("BDD - Player X won with a vertical line")
     @Test
     void playerXWonWithVertical () throws BadPlayer, BadMove {
+        assertEquals(GameStatus.IN_PROGRESS, ticTacToe.getGameResult());
         ticTacToe.move("X",1,1);
-        assertEquals(GameStatus.IN_PROGRESS, ticTacToe.getGameResult());
         ticTacToe.move("O",2,2);
-        assertEquals(GameStatus.IN_PROGRESS, ticTacToe.getGameResult());
         ticTacToe.move("X",2,1);
-        assertEquals(GameStatus.IN_PROGRESS, ticTacToe.getGameResult());
         ticTacToe.move("O",3,3);
-        assertEquals(GameStatus.IN_PROGRESS, ticTacToe.getGameResult());
         ticTacToe.move("X",3,1);
         assertEquals(GameStatus.PLAYER_X_WON, ticTacToe.getGameResult());
     }
@@ -42,31 +39,39 @@ class TicTacToeTest {
     @DisplayName("BDD - Player O won with a vertical line")
     @Test
     void playerOWonWithVertical () throws BadPlayer, BadMove {
-        TicTacToe ticTacToe = new TicTacToe();
+        assertEquals(GameStatus.IN_PROGRESS, ticTacToe.getGameResult());
         ticTacToe.move("X",1,1);
-        assertEquals(GameStatus.IN_PROGRESS, ticTacToe.getGameResult());
         ticTacToe.move("O",1,2);
-        assertEquals(GameStatus.IN_PROGRESS, ticTacToe.getGameResult());
         ticTacToe.move("X",1,3);
-        assertEquals(GameStatus.IN_PROGRESS, ticTacToe.getGameResult());
         ticTacToe.move("O",2,2);
-        assertEquals(GameStatus.IN_PROGRESS, ticTacToe.getGameResult());
         ticTacToe.move("X",3,3);
-        assertEquals(GameStatus.IN_PROGRESS, ticTacToe.getGameResult());
         ticTacToe.move("O",3,2);
         assertEquals(GameStatus.PLAYER_O_WON, ticTacToe.getGameResult());
     }
 
-    @Disabled
     @DisplayName("BDD - Player X won with a horizontal line")
     @Test
     void playerXWonWithHorizontal () throws BadPlayer, BadMove {
+        assertEquals(GameStatus.IN_PROGRESS, ticTacToe.getGameResult());
+        ticTacToe.move("X",1,1);
+        ticTacToe.move("O",2,2);
+        ticTacToe.move("X",1,2);
+        ticTacToe.move("O",3,3);
+        ticTacToe.move("X",1,3);
+        assertEquals(GameStatus.PLAYER_X_WON, ticTacToe.getGameResult());
     }
 
-    @Disabled
     @DisplayName("BDD - Player O won with a horizontal line")
     @Test
     void playerOWonWithHorizontal () throws BadPlayer, BadMove {
+        assertEquals(GameStatus.IN_PROGRESS, ticTacToe.getGameResult());
+        ticTacToe.move("X",1,1);
+        ticTacToe.move("O",2,2);
+        ticTacToe.move("X",1,2);
+        ticTacToe.move("O",2,3);
+        ticTacToe.move("X",3,3);
+        ticTacToe.move("O",2,1);
+        assertEquals(GameStatus.PLAYER_O_WON, ticTacToe.getGameResult());
     }
 
     @Disabled

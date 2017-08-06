@@ -6,7 +6,8 @@ import com.undeadgrishnakch.kata.exception.BadPlayer;
 import java.util.Arrays;
 
 /**
- * Private class to model the Players
+ * Game sub class to model the Players: X; O
+ *
  * Created by michele.brissoni@ibm.com on 29/07/2017.
  */
 public class Player {
