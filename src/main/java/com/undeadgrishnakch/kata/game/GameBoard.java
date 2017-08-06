@@ -11,12 +11,12 @@ import org.jetbrains.annotations.NotNull;
  * Created by michele.brissoni@ibm.com on 23/07/2017.
  */
 public class GameBoard {
-    static private final int rows = 3;
-    static private final int columns = 3;
-    private String gameBoard[][] = null;
+    private String board[][] = null;
+    private static final int ROWS = 3;
+    private static final int COLUMNS = 3;
 
     public GameBoard() {
-        this.gameBoard = new String[][] {{" "," "," "},{" "," "," "},{" "," "," "}};
+        this.board = new String[][] {{" "," "," "},{" "," "," "},{" "," "," "}};
     }
 
     public String displayGameBoard(){
@@ -35,25 +35,25 @@ public class GameBoard {
 
 
     private String getGameBoardCell(int row, int column) {
-        return gameBoard[row-1][column-1];
+        return board[row-1][column-1];
     }
 
     void setGameBoardCell(Player player, int row, int column) {
-        this.gameBoard[row-1][column-1] = player.getName();
+        this.board[row-1][column-1] = player.getName();
     }
 
-    public boolean isTheCellIntoTheGame(int row, int column) {
-        return row >= 1 && row <= rows && column >= 1 && column <= columns;
+    boolean isTheCellIntoTheGame(int row, int column) {
+        return row >= 1 && row <= ROWS && column >= 1 && column <= COLUMNS;
     }
 
-    public boolean isTheCellEmpty(int row, int column) throws BadMove {
+    boolean isTheCellEmpty(int row, int column) throws BadMove {
         if (isTheCellIntoTheGame( row,  column)){
             return getGameBoardCell(row, column).equals(" ");
         } else throw new BadMove("Move out of the game!");  //TODO: techdebt - refactor throw mechanism above
     }
 
-    public boolean isVerticalWon(@NotNull Player player) {
-        for (int col = 1; col <= columns; col++) {
+    boolean isVerticalWon(@NotNull Player player) {
+        for (int col = 1; col <= COLUMNS; col++) {
             if (    getGameBoardCell(1,col).equals(player.getName()) &&
                     getGameBoardCell(2,col).equals(player.getName()) &&
                     getGameBoardCell(3,col).equals(player.getName())) {
@@ -63,8 +63,8 @@ public class GameBoard {
         return false;
     }
 
-    public boolean isHorizontalWon(Player player) {
-        for (int row = 1; row <= columns; row++) {
+    boolean isHorizontalWon(Player player) {
+        for (int row = 1; row <= COLUMNS; row++) {
             if (    getGameBoardCell(row,1).equals(player.getName()) &&
                     getGameBoardCell(row,2).equals(player.getName()) &&
                     getGameBoardCell(row,3).equals(player.getName())) {
@@ -74,24 +74,20 @@ public class GameBoard {
         return false;
     }
 
-    public boolean isDiagonalWon(Player player) {
-        if (    getGameBoardCell(1,1).equals(player.getName()) &&
-                getGameBoardCell(2,2).equals(player.getName()) &&
-                getGameBoardCell(3,3).equals(player.getName())) {
-            return true;
-        }
+    boolean isDiagonalWon(Player player) {
+        return  getGameBoardCell(1, 1).equals(player.getName()) &&
+                getGameBoardCell(2, 2).equals(player.getName()) &&
+                getGameBoardCell(3, 3).equals(player.getName()) ||
 
-        if (    getGameBoardCell(1,3).equals(player.getName()) &&
-                getGameBoardCell(2,2).equals(player.getName()) &&
-                getGameBoardCell(3,1).equals(player.getName())) {
-            return true;
-        }
-        return false;
+                getGameBoardCell(1, 3).equals(player.getName()) &&
+                getGameBoardCell(2, 2).equals(player.getName()) &&
+                getGameBoardCell(3, 1).equals(player.getName());
+
     }
 
-    public boolean isDraw(Player player) {
-        for (int col = 1; col <= columns; col++) {
-            for (int row = 1; row <= rows; row++) {
+    boolean isDraw() {
+        for (int col = 1; col <= COLUMNS; col++) {
+            for (int row = 1; row <= ROWS; row++) {
                 if (getGameBoardCell(row, col).equals(" ")) {
                     return false;
                 }

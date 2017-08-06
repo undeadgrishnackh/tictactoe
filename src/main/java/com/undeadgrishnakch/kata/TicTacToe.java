@@ -19,12 +19,14 @@ import org.jetbrains.annotations.NotNull;
 public class TicTacToe {
     private GameBoard gameBoard = null;
     private GameStatus gameStatus = null;
+    private GameRules gameRules = null;
     private final Player[] players = new Player[2];
     private Player round = null;
 
     public TicTacToe() throws BadPlayer {
         this.gameBoard = new GameBoard();
         this.gameStatus = new GameStatus();
+        this.gameRules = new GameRules();
         this.players[0] = new Player("X", this);
         this.players[1] = new Player("O", this);
         this.round = this.players[0];
@@ -74,9 +76,8 @@ public class TicTacToe {
 
     //------------------------------------------------------ GAME MOVEMENTS
     public void move(String player, int row, int column) throws BadMove, BadPlayer {
-        //TODO: 2 - check with UAT move after game end!
-        GameRules.move(this.getPlayer(player),row,column);
-        if (!GameRules.isGameOver(this.getPlayer(player))){
+        this.gameRules.move(this.getPlayer(player),row,column);
+        if (!this.gameRules.isGameOver(this.getPlayer(player))){
             nextRound();
         }
         System.out.println(gameBoard.displayGameBoard() + getGameResult() + "\n");

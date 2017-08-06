@@ -10,10 +10,11 @@ import com.undeadgrishnakch.kata.status.GameStatus;
  * 3- game over and final status
  * Created by michele.brissoni@ibm.com on 29/07/2017.
  */
-//TODO: techdebt -- Create the constructor to improve tests and link to the game instance.
 public class GameRules {
+    public GameRules() {
+    }
 
-    public static void move(Player player,  int row, int column) throws BadMove {
+    public void move(Player player, int row, int column) throws BadMove {
         if (!isYourRound(player))
             throw new BadMove("Isn't your round player " + player.getName());
 
@@ -27,22 +28,26 @@ public class GameRules {
     }
 
 
-    public static boolean isGameOver(Player player) {
+    public boolean isGameOver(Player player) {
         GameBoard gameboard = player.getGame().getGameBoard();
         if (gameboard.isVerticalWon(player)){
-            return setGameStatusToVictory(player);
+            setGameStatusToVictory(player);
+            return true;
         }
 
         if (gameboard.isHorizontalWon(player)){
-            return setGameStatusToVictory(player);
+            setGameStatusToVictory(player);
+            return true;
         }
 
         if (gameboard.isDiagonalWon(player)){
-            return setGameStatusToVictory(player);
+            setGameStatusToVictory(player);
+            return true;
         }
 
-        if (gameboard.isDraw(player)){
-            return setGameStatusToDraw(player);
+        if (gameboard.isDraw()){
+            setGameStatusToDraw(player);
+            return true;
         }
 
         return false;
@@ -50,38 +55,35 @@ public class GameRules {
 
     /* --------------------------------------------------------------------------------- */
 
-    private static boolean setGameStatusToDraw(Player player) {
+    private void setGameStatusToDraw(Player player) {
         setGameResult(player, GameStatus.DRAW);
-        return true;
     }
 
-    private static boolean setGameStatusToVictory(Player player) {
+    private void setGameStatusToVictory(Player player) {
         if (player.getName().equals("X")) {
             setGameResult(player, GameStatus.PLAYER_X_WON);
-            return true;
         } else {
             setGameResult(player, GameStatus.PLAYER_O_WON);
-            return true;
         }
     }
 
-    private static void setGameResult(Player player, String gameStatus) {
+    private void setGameResult(Player player, String gameStatus) {
         player.getGame().setGameResult(gameStatus);
     }
 
-    private static boolean isYourRound(Player player) {
+    private boolean isYourRound(Player player) {
         return player.getName().equals(player.getGame().getRound().getName());
     }
 
-    private static boolean isMovingIntoTheBoard(Player player, int row, int column) {
+    private boolean isMovingIntoTheBoard(Player player, int row, int column) {
         return player.getGame().getGameBoard().isTheCellIntoTheGame(row, column);
     }
 
-    private static boolean isTheCellEmpty(Player player, int row, int column) throws BadMove {
+    private boolean isTheCellEmpty(Player player, int row, int column) throws BadMove {
         return player.getGame().getGameBoard().isTheCellEmpty(row,column);
     }
 
-    private static void placePlayerPinIntoTheCell(Player player, int row, int column) {
+    private void placePlayerPinIntoTheCell(Player player, int row, int column) {
         player.getGame().getGameBoard().setGameBoardCell(player,row, column);
     }
 }
