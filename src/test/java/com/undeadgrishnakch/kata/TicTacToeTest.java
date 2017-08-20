@@ -8,6 +8,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 /**
  * BDD Test class to check the overall game
@@ -113,4 +114,19 @@ class TicTacToeTest {
         ticTacToe.move("X",3,3);
         assertEquals(GameStatus.DRAW, ticTacToe.getGameResult());
     }
+
+    @DisplayName("BDD - BOT VS BOT Games")
+    @Test
+    void botVsBot () throws BadPlayer, BadMove {
+        assertEquals(GameStatus.IN_PROGRESS, ticTacToe.getGameResult());
+        boolean finalResult = false;
+        ticTacToe.generateGame();
+        if (ticTacToe.getGameResult().equals(GameStatus.DRAW) ||
+            ticTacToe.getGameResult().equals(GameStatus.PLAYER_O_WON) ||
+            ticTacToe.getGameResult().equals(GameStatus.PLAYER_X_WON)) {
+            finalResult = true;
+        }
+        assertTrue(finalResult);
+    }
+
 }

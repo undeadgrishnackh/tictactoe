@@ -8,6 +8,8 @@ import com.undeadgrishnakch.kata.game.Player;
 import com.undeadgrishnakch.kata.status.GameStatus;
 import org.jetbrains.annotations.NotNull;
 
+import java.util.Random;
+
 /**
  * Tic Tac Toe Kata developed in TDD mode to show TDD
  * development in a workshop training.
@@ -66,7 +68,7 @@ public class TicTacToe {
     }
 
     //------------------------------------------------------ GAME RESULT
-    String getGameResult() {
+    public String getGameResult() {
         return this.gameStatus.getGameResult();
     }
 
@@ -77,9 +79,31 @@ public class TicTacToe {
     //------------------------------------------------------ GAME MOVEMENTS
     public void move(String player, int row, int column) throws BadMove, BadPlayer {
         this.gameRules.move(this.getPlayer(player),row,column);
-        if (!this.gameRules.isGameOver(this.getPlayer(player))){
+        if (!this.gameRules.isGameOverAfterThisMove(this.getPlayer(player))){
             nextRound();
+            System.out.println(gameBoard.displayGameBoard() + getGameResult() + "\n");
+        } else {
+            System.out.println(gameBoard.displayGameBoard() + getGameResult() + "\n" + "GAME OVER! :)\n");
         }
-        System.out.println(gameBoard.displayGameBoard() + getGameResult() + "\n");
     }
+
+    //------------------------------------------------------ GAME TYPE:
+    // BOT VS BOT
+    // BOT VS Player
+    // Player VS Player
+    public void generateGame() throws BadPlayer {
+        Random random = new Random();
+        int r, c, maxRounds = 0;
+        while (maxRounds < 9) { //at max 9 movements
+            try {
+                r = random.nextInt(3)+1;
+                c = random.nextInt(3)+1; //TODO: refactor this piece of code with a new PlayerBot class to test the random movements range.
+                this.move(this.getRound().getName(), r, c);
+            } catch (BadMove badMove) {
+                continue;
+            }
+            maxRounds++;
+        }
+    }
+
 }

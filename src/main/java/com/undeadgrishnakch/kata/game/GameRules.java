@@ -1,5 +1,6 @@
 package com.undeadgrishnakch.kata.game;
 
+import com.undeadgrishnakch.kata.TicTacToe;
 import com.undeadgrishnakch.kata.exception.BadMove;
 import com.undeadgrishnakch.kata.status.GameStatus;
 
@@ -15,6 +16,9 @@ public class GameRules {
     }
 
     public void move(Player player, int row, int column) throws BadMove {
+        if (isGameOver(player))
+            throw new BadMove("You tried to move after the match is closed!");
+
         if (!isYourRound(player))
             throw new BadMove("Isn't your round player " + player.getName());
 
@@ -24,11 +28,18 @@ public class GameRules {
         if (!isTheCellEmpty(player, row, column))
             throw new BadMove("You tried to move over a not empty slot!");
 
+
         placePlayerPinIntoTheCell(player, row, column);
     }
 
+    private boolean isGameOver(Player player) {
+        TicTacToe ticTacToe = player.getGame();
+        if (ticTacToe.getGameResult().equals(GameStatus.IN_PROGRESS)) return false;
+        return true;
+    }
 
-    public boolean isGameOver(Player player) {
+
+    public boolean isGameOverAfterThisMove(Player player) {
         GameBoard gameboard = player.getGame().getGameBoard();
         if (gameboard.isVerticalWon(player)){
             setGameStatusToVictory(player);

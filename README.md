@@ -32,5 +32,5 @@ In Jenkins I've also configured the sonarqube analyzer to point directly with th
 
 ### SonarQube
 SonarQube is provided as CaaS byt this docker image: https://hub.docker.com/_/sonarqube/
-The docker container port 9000 is bind locally on 9000. Sonarqube is also linked to the postgresql database in A CaaS.
+The docker container port 9000 is bind loca lly on 9000. Sonarqube is also linked to the postgresql database in A CaaS.
 
