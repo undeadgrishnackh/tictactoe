@@ -2,6 +2,7 @@ package com.undeadgrishnakch.kata.game;
 
 import com.undeadgrishnakch.kata.TicTacToe;
 import com.undeadgrishnakch.kata.exception.BadMove;
+import com.undeadgrishnakch.kata.exception.GameOver;
 import com.undeadgrishnakch.kata.status.GameStatus;
 
 /**
@@ -15,9 +16,9 @@ public class GameRules {
     public GameRules() {
     }
 
-    public void move(Player player, int row, int column) throws BadMove {
+    public void move(Player player, int row, int column) throws BadMove, GameOver {
         if (isGameOver(player))
-            throw new BadMove("You tried to move after the match is closed!");
+            throw new GameOver();
 
         if (!isYourRound(player))
             throw new BadMove("Isn't your round player " + player.getName());
@@ -34,8 +35,7 @@ public class GameRules {
 
     private boolean isGameOver(Player player) {
         TicTacToe ticTacToe = player.getGame();
-        if (ticTacToe.getGameResult().equals(GameStatus.IN_PROGRESS)) return false;
-        return true;
+        return !ticTacToe.getGameResult().equals(GameStatus.IN_PROGRESS);
     }
 
 
@@ -83,7 +83,7 @@ public class GameRules {
     }
 
     private boolean isYourRound(Player player) {
-        return player.getName().equals(player.getGame().getRound().getName());
+        return player.getName().equals(player.getGame().getActualRoundPlayer().getName());
     }
 
     private boolean isMovingIntoTheBoard(Player player, int row, int column) {

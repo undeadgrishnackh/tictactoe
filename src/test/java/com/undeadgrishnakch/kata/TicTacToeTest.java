@@ -2,6 +2,7 @@ package com.undeadgrishnakch.kata;
 
 import com.undeadgrishnakch.kata.exception.BadMove;
 import com.undeadgrishnakch.kata.exception.BadPlayer;
+import com.undeadgrishnakch.kata.exception.GameOver;
 import com.undeadgrishnakch.kata.status.GameStatus;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -18,15 +19,26 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 class TicTacToeTest {
     private TicTacToe ticTacToe = null;
 
+    /**
+     * Private test method to improve the test readability
+     */
+    private boolean isGameCorrectlyOver() {
+        return ticTacToe.getGameResult().equals(GameStatus.DRAW) ||
+                ticTacToe.getGameResult().equals(GameStatus.PLAYER_O_WON) ||
+                ticTacToe.getGameResult().equals(GameStatus.PLAYER_X_WON);
+    }
+
     @BeforeEach
     void setUp() throws BadPlayer {
         this.ticTacToe = new TicTacToe();
     }
 
+    //------------------------------------------------------------------------------
+
 
     @DisplayName("BDD - Player X won with a vertical line")
     @Test
-    void playerXWonWithVertical () throws BadPlayer, BadMove {
+    void playerXWonWithVertical () throws BadPlayer, BadMove, GameOver {
         assertEquals(GameStatus.IN_PROGRESS, ticTacToe.getGameResult());
         ticTacToe.move("X",1,1);
         ticTacToe.move("O",2,2);
@@ -38,7 +50,7 @@ class TicTacToeTest {
 
     @DisplayName("BDD - Player O won with a vertical line")
     @Test
-    void playerOWonWithVertical () throws BadPlayer, BadMove {
+    void playerOWonWithVertical () throws BadPlayer, BadMove, GameOver {
         assertEquals(GameStatus.IN_PROGRESS, ticTacToe.getGameResult());
         ticTacToe.move("X",1,1);
         ticTacToe.move("O",1,2);
@@ -51,7 +63,7 @@ class TicTacToeTest {
 
     @DisplayName("BDD - Player X won with a horizontal line")
     @Test
-    void playerXWonWithHorizontal () throws BadPlayer, BadMove {
+    void playerXWonWithHorizontal () throws BadPlayer, BadMove, GameOver {
         assertEquals(GameStatus.IN_PROGRESS, ticTacToe.getGameResult());
         ticTacToe.move("X",1,1);
         ticTacToe.move("O",2,2);
@@ -63,7 +75,7 @@ class TicTacToeTest {
 
     @DisplayName("BDD - Player O won with a horizontal line")
     @Test
-    void playerOWonWithHorizontal () throws BadPlayer, BadMove {
+    void playerOWonWithHorizontal () throws BadPlayer, BadMove, GameOver {
         assertEquals(GameStatus.IN_PROGRESS, ticTacToe.getGameResult());
         ticTacToe.move("X",1,1);
         ticTacToe.move("O",2,2);
@@ -76,7 +88,7 @@ class TicTacToeTest {
 
     @DisplayName("BDD - Player X Won With Diagonal")
     @Test
-    void playerXWonWithDiagonal () throws BadPlayer, BadMove {
+    void playerXWonWithDiagonal () throws BadPlayer, BadMove, GameOver {
         assertEquals(GameStatus.IN_PROGRESS, ticTacToe.getGameResult());
         ticTacToe.move("X",1,1);
         ticTacToe.move("O",1,2);
@@ -88,7 +100,7 @@ class TicTacToeTest {
 
     @DisplayName("BDD - Player O Won With Diagonal")
     @Test
-    void playerOWonWithDiagonal () throws BadPlayer, BadMove {
+    void playerOWonWithDiagonal () throws BadPlayer, BadMove, GameOver {
         assertEquals(GameStatus.IN_PROGRESS, ticTacToe.getGameResult());
         ticTacToe.move("X",1,1);
         ticTacToe.move("O",2,2);
@@ -101,7 +113,7 @@ class TicTacToeTest {
 
     @DisplayName("BDD - Draw")
     @Test
-    void draw () throws BadPlayer, BadMove {
+    void draw () throws BadPlayer, BadMove, GameOver {
         assertEquals(GameStatus.IN_PROGRESS, ticTacToe.getGameResult());
         ticTacToe.move("X",1,1);
         ticTacToe.move("O",1,2);
@@ -117,16 +129,10 @@ class TicTacToeTest {
 
     @DisplayName("BDD - BOT VS BOT Games")
     @Test
-    void botVsBot () throws BadPlayer, BadMove {
+    void botVsBot () throws BadPlayer, BadMove, GameOver {
         assertEquals(GameStatus.IN_PROGRESS, ticTacToe.getGameResult());
-        boolean finalResult = false;
-        ticTacToe.generateGame();
-        if (ticTacToe.getGameResult().equals(GameStatus.DRAW) ||
-            ticTacToe.getGameResult().equals(GameStatus.PLAYER_O_WON) ||
-            ticTacToe.getGameResult().equals(GameStatus.PLAYER_X_WON)) {
-            finalResult = true;
-        }
-        assertTrue(finalResult);
+        ticTacToe.playBotVsBotGame();
+        assertTrue(isGameCorrectlyOver());
     }
 
 }

@@ -2,13 +2,12 @@ package com.undeadgrishnakch.kata;
 
 import com.undeadgrishnakch.kata.exception.BadMove;
 import com.undeadgrishnakch.kata.exception.BadPlayer;
+import com.undeadgrishnakch.kata.exception.GameOver;
 import com.undeadgrishnakch.kata.game.GameBoard;
 import com.undeadgrishnakch.kata.game.GameRules;
 import com.undeadgrishnakch.kata.game.Player;
 import com.undeadgrishnakch.kata.status.GameStatus;
 import org.jetbrains.annotations.NotNull;
-
-import java.util.Random;
 
 /**
  * Tic Tac Toe Kata developed in TDD mode to show TDD
@@ -57,12 +56,12 @@ public class TicTacToe {
         }
     }
 
-    public Player getRound() {
+    public Player getActualRoundPlayer() {
         return round;
     }
 
     private void nextRound(){
-        if (getRound() == this.players[0]) {
+        if (getActualRoundPlayer() == this.players[0]) {
             this.round = this.players[1];
         } else this.round = this.players[0];
     }
@@ -77,7 +76,7 @@ public class TicTacToe {
     }
 
     //------------------------------------------------------ GAME MOVEMENTS
-    public void move(String player, int row, int column) throws BadMove, BadPlayer {
+    public void move(String player, int row, int column) throws BadMove, BadPlayer, GameOver {
         this.gameRules.move(this.getPlayer(player),row,column);
         if (!this.gameRules.isGameOverAfterThisMove(this.getPlayer(player))){
             nextRound();
@@ -87,22 +86,17 @@ public class TicTacToe {
         }
     }
 
-    //------------------------------------------------------ GAME TYPE:
+    //------------------------------------------------------ GAME TYPEs:
     // BOT VS BOT
     // BOT VS Player
     // Player VS Player
-    public void generateGame() throws BadPlayer {
-        Random random = new Random();
-        int r, c, maxRounds = 0;
-        while (maxRounds < 9) { //at max 9 movements
+    public void playBotVsBotGame() throws BadPlayer {
+        while (true) {
             try {
-                r = random.nextInt(3)+1;
-                c = random.nextInt(3)+1; //TODO: refactor this piece of code with a new PlayerBot class to test the random movements range.
-                this.move(this.getRound().getName(), r, c);
-            } catch (BadMove badMove) {
-                continue;
+                this.getActualRoundPlayer().moveRandom();
+            } catch (GameOver gameOverExc) {
+                break;
             }
-            maxRounds++;
         }
     }
 

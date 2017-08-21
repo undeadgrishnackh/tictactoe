@@ -1,9 +1,12 @@
 package com.undeadgrishnakch.kata.game;
 
 import com.undeadgrishnakch.kata.TicTacToe;
+import com.undeadgrishnakch.kata.exception.BadMove;
 import com.undeadgrishnakch.kata.exception.BadPlayer;
+import com.undeadgrishnakch.kata.exception.GameOver;
 
 import java.util.Arrays;
+import java.util.Random;
 
 /**
  * Game sub class to model the Players: X; O
@@ -34,5 +37,26 @@ public class Player {
 
     public TicTacToe getGame() {
         return game;
+    }
+
+    /**
+     * Generate a random move that satisfy the game rules. In case after this move the game is over
+     * throw a game over exception to signal that the game is done.
+     * @throws GameOver
+     */
+    public void moveRandom() throws BadPlayer, GameOver {
+        Random random = new Random();
+        int r, c;
+        while (true) {
+            try {
+                r = random.nextInt(3)+1;
+                c = random.nextInt(3)+1;
+                this.getGame().move(this.getName(), r, c);
+                break;
+            } catch (BadMove ignored) {
+            } catch (GameOver gameOverExc) {
+                throw gameOverExc;
+            }
+        }
     }
 }
