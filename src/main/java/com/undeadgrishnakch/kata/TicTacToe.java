@@ -91,7 +91,7 @@ public class TicTacToe {
     // BOT VS Player
     // Player VS Player
     public void playBotVsBotGame() throws BadPlayer {
-        while (true) {
+        for (int round = 0; round < 9; round++) {
             try {
                 this.getActualRoundPlayer().moveRandom();
             } catch (GameOver gameOverExc) {
