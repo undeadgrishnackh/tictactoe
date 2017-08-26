@@ -11,7 +11,7 @@ import org.jetbrains.annotations.NotNull;
  * Created by michele.brissoni@ibm.com on 23/07/2017.
  */
 public class GameBoard {
-    private String board[][] = null;
+    private String[][] board = null;
     private static final int ROWS = 3;
     private static final int COLUMNS = 3;
 

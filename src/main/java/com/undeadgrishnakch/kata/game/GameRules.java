@@ -13,6 +13,12 @@ import com.undeadgrishnakch.kata.status.GameStatus;
  * Created by michele.brissoni@ibm.com on 29/07/2017.
  */
 public class GameRules {
+    /**
+     * The GameRules engine is a "black box" class that implement the game rules.  Accept or reject the move
+     * from a player. If the move is rejected the class throw a BadMove.
+     * When the game is over the move method will throw a GameOver.
+     * The class is intentionally designed to improve the readability of the code in a BDD POV.
+     */
     public GameRules() {
     }
 

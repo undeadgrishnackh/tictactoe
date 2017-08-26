@@ -4,9 +4,11 @@ import com.undeadgrishnakch.kata.TicTacToe;
 import com.undeadgrishnakch.kata.exception.BadMove;
 import com.undeadgrishnakch.kata.exception.BadPlayer;
 import com.undeadgrishnakch.kata.exception.GameOver;
+import org.apache.logging.log4j.LogManager;
 
 import java.util.Arrays;
 import java.util.Random;
+
 
 /**
  * Game sub class to model the Players: X; O
@@ -16,7 +18,7 @@ import java.util.Random;
 public class Player {
     private String name = null;
     private TicTacToe game = null;
-
+    private static org.apache.logging.log4j.Logger logger = LogManager.getLogger(Player.class);
 
     public Player(String name) throws BadPlayer {
         String[] playerAllowed = {"X", "O"};
@@ -46,14 +48,17 @@ public class Player {
      */
     public void moveRandom() throws BadPlayer, GameOver {
         Random random = new Random();
-        int r, c;
+        int r;
+        int c;
         while (true) {
             try {
                 r = random.nextInt(3)+1;
                 c = random.nextInt(3)+1;
+                logger.debug("Rondom move is r=" + r + "; c="+ c);
                 this.getGame().move(this.getName(), r, c);
                 break;
             } catch (BadMove ignored) {
+                logger.trace("BadMove is caught but ignored.");
             } catch (GameOver gameOverExc) {
                 throw gameOverExc;
             }

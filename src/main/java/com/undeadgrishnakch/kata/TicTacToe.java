@@ -7,6 +7,8 @@ import com.undeadgrishnakch.kata.game.GameBoard;
 import com.undeadgrishnakch.kata.game.GameRules;
 import com.undeadgrishnakch.kata.game.Player;
 import com.undeadgrishnakch.kata.status.GameStatus;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
 
 /**
@@ -23,14 +25,18 @@ public class TicTacToe {
     private GameRules gameRules = null;
     private final Player[] players = new Player[2];
     private Player round = null;
+    private static Logger logger = LogManager.getLogger(TicTacToe.class);
+
 
     public TicTacToe() throws BadPlayer {
+        logger.trace("Game creation...");
         this.gameBoard = new GameBoard();
         this.gameStatus = new GameStatus();
         this.gameRules = new GameRules();
         this.players[0] = new Player("X", this);
         this.players[1] = new Player("O", this);
         this.round = this.players[0];
+        logger.trace("Game created.");
     }
 
     //------------------------------------------------------ GAME BOARD
@@ -77,12 +83,13 @@ public class TicTacToe {
 
     //------------------------------------------------------ GAME MOVEMENTS
     public void move(String player, int row, int column) throws BadMove, BadPlayer, GameOver {
+        logger.trace("Player " + player + " is moving to r="+row+" c="+column);
         this.gameRules.move(this.getPlayer(player),row,column);
         if (!this.gameRules.isGameOverAfterThisMove(this.getPlayer(player))){
             nextRound();
-            System.out.println(gameBoard.displayGameBoard() + getGameResult() + "\n");
+            logger.debug("\n" + gameBoard.displayGameBoard() + getGameResult() + "\n");
         } else {
-            System.out.println(gameBoard.displayGameBoard() + getGameResult() + "\n" + "GAME OVER! :)\n");
+            logger.debug("\n" + gameBoard.displayGameBoard() + getGameResult() + "\n" + "GAME OVER! :)\n");
         }
     }
 
@@ -91,10 +98,14 @@ public class TicTacToe {
     // BOT VS Player
     // Player VS Player
     public void playBotVsBotGame() throws BadPlayer {
-        for (int round = 0; round < 9; round++) {
+        int round = 0;
+        logger.debug("Game BOT VS BOT");
+        for (; round < 9; round++) {
             try {
+                logger.debug("Round " + round);
                 this.getActualRoundPlayer().moveRandom();
             } catch (GameOver gameOverExc) {
+                logger.debug("GAME OVER trapped. Exit signal.");
                 break;
             }
         }
