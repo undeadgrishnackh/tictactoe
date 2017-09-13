@@ -17,3 +17,10 @@
         </Root>
     </Loggers>
 </Configuration>
+
+<!--
+    http://www.baeldung.com/mdc-in-log4j-2-logb
+    https://logging.apache.org/log4j/2.x/manual/thread-context.html
+    https://blog.oio.de/2010/11/09/logging-additional-information-like-sessionid-in-every-log4j-message/
+
+    To inject into the log messages the tracking ID necessary to filter the log messages into ELK -->
