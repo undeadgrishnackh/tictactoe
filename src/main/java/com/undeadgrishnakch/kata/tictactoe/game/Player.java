@@ -1,9 +1,9 @@
-package com.undeadgrishnakch.kata.game;
+package com.undeadgrishnakch.kata.tictactoe.game;
 
-import com.undeadgrishnakch.kata.TicTacToe;
-import com.undeadgrishnakch.kata.exception.BadMove;
-import com.undeadgrishnakch.kata.exception.BadPlayer;
-import com.undeadgrishnakch.kata.exception.GameOver;
+import com.undeadgrishnakch.kata.tictactoe.TicTacToe;
+import com.undeadgrishnakch.kata.tictactoe.exception.BadMove;
+import com.undeadgrishnakch.kata.tictactoe.exception.BadPlayer;
+import com.undeadgrishnakch.kata.tictactoe.exception.GameOver;
 import org.apache.logging.log4j.LogManager;
 
 import java.util.Arrays;

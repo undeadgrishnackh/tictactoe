@@ -1,12 +1,12 @@
-package com.undeadgrishnakch.kata;
+package com.undeadgrishnakch.kata.tictactoe;
 
-import com.undeadgrishnakch.kata.exception.BadMove;
-import com.undeadgrishnakch.kata.exception.BadPlayer;
-import com.undeadgrishnakch.kata.exception.GameOver;
-import com.undeadgrishnakch.kata.game.GameBoard;
-import com.undeadgrishnakch.kata.game.GameRules;
-import com.undeadgrishnakch.kata.game.Player;
-import com.undeadgrishnakch.kata.status.GameStatus;
+import com.undeadgrishnakch.kata.tictactoe.exception.BadMove;
+import com.undeadgrishnakch.kata.tictactoe.exception.BadPlayer;
+import com.undeadgrishnakch.kata.tictactoe.exception.GameOver;
+import com.undeadgrishnakch.kata.tictactoe.game.GameBoard;
+import com.undeadgrishnakch.kata.tictactoe.game.GameRules;
+import com.undeadgrishnakch.kata.tictactoe.game.Player;
+import com.undeadgrishnakch.kata.tictactoe.status.GameStatus;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.jetbrains.annotations.NotNull;

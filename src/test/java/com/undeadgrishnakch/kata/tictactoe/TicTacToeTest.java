@@ -1,9 +1,9 @@
-package com.undeadgrishnakch.kata;
+package com.undeadgrishnakch.kata.tictactoe;
 
-import com.undeadgrishnakch.kata.exception.BadMove;
-import com.undeadgrishnakch.kata.exception.BadPlayer;
-import com.undeadgrishnakch.kata.exception.GameOver;
-import com.undeadgrishnakch.kata.status.GameStatus;
+import com.undeadgrishnakch.kata.tictactoe.exception.BadMove;
+import com.undeadgrishnakch.kata.tictactoe.exception.BadPlayer;
+import com.undeadgrishnakch.kata.tictactoe.exception.GameOver;
+import com.undeadgrishnakch.kata.tictactoe.status.GameStatus;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

@@ -1,4 +1,4 @@
-package com.undeadgrishnakch.kata.exception;
+package com.undeadgrishnakch.kata.tictactoe.exception;
 
 /**
  * Exception to manage the bad players use or naming.

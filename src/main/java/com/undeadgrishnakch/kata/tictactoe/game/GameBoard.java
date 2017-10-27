@@ -1,6 +1,6 @@
-package com.undeadgrishnakch.kata.game;
+package com.undeadgrishnakch.kata.tictactoe.game;
 
-import com.undeadgrishnakch.kata.exception.BadMove;
+import com.undeadgrishnakch.kata.tictactoe.exception.BadMove;
 import org.jetbrains.annotations.NotNull;
 
 /**

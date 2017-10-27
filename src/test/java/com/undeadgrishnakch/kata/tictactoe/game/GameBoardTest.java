@@ -1,7 +1,7 @@
-package com.undeadgrishnakch.kata.game;
+package com.undeadgrishnakch.kata.tictactoe.game;
 
-import com.undeadgrishnakch.kata.TicTacToe;
-import com.undeadgrishnakch.kata.exception.BadPlayer;
+import com.undeadgrishnakch.kata.tictactoe.TicTacToe;
+import com.undeadgrishnakch.kata.tictactoe.exception.BadPlayer;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

@@ -1,4 +1,4 @@
-package com.undeadgrishnakch.kata.status;
+package com.undeadgrishnakch.kata.tictactoe.status;
 
 /**
  * Game sub class that define the possible game status.
