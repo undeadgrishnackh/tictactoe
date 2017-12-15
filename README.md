@@ -1,6 +1,6 @@
 ## com.undeadgrishnakch.kata.TicTacToe
 [![Build Status][travisimg]][travislink]
-[![Quality Gate](https://sonarqube.com/api/badges/gate?key=test:tictactoe)](https://sonarqube.com/dashboard/index/test:tictactoe)
+[![Quality Gate](https://sonarcloud.io/api/badges/gate?key=com.undeadgrishnackh:tictactoe)](https://sonarcloud.io/dashboard/index/com.undeadgrishnackh:tictactoe)
 [![Coverage Status](https://coveralls.io/repos/github/undeadgrishnackh/tictactoe/badge.svg?branch=master)](https://coveralls.io/github/undeadgrishnackh/tictactoe?branch=master)
 
 # TDD classroom example
