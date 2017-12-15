@@ -17,6 +17,6 @@ cache:
 deploy:
   provider: pages
   skip_cleanup: true
-  github_token: d231f36d5fa7995470cc4424a3c0d4c288d0d230 # Set in travis-ci.org dashboard
+  github_token: 907b3aeebf21da1e4ca0490678ebdaedc72367a0
   on:
     branch: master
