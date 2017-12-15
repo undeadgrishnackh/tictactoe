@@ -21,4 +21,4 @@ deploy:
   on:
     branch: master
 after_success:
-  - coveralls
+  - mvn clean test jacoco:report coveralls:report

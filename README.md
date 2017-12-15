@@ -1,5 +1,7 @@
 ## com.undeadgrishnakch.kata.TicTacToe
-[![Build Status][travisimg]][travislink] [![Coverage Status](https://coveralls.io/repos/github/undeadgrishnackh/tictactoe/badge.svg?branch=master)](https://coveralls.io/github/undeadgrishnackh/tictactoe?branch=master)
+[![Build Status][travisimg]][travislink]
+[![Quality Gate](https://sonarqube.com/api/badges/gate?key=test:tictactoe)](https://sonarqube.com/dashboard/index/test:tictactoe)
+[![Coverage Status](https://coveralls.io/repos/github/undeadgrishnackh/tictactoe/badge.svg?branch=master)](https://coveralls.io/github/undeadgrishnackh/tictactoe?branch=master)
 
 # TDD classroom example
 This repository is designed to show to a classroom how to spike Agile, TDD and the latest technologies trough a simple kata about the famous Tic Tac Toe game.
