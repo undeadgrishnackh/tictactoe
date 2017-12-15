@@ -1,6 +1,6 @@
 ## com.undeadgrishnakch.kata.TicTacToe
-[![Build Status][travisimg]][travislink] [![Coverage Status][coverimg]][coverlink]
-----
+[![Build Status][travisimg]][travislink] [![Coverage Status](https://coveralls.io/repos/github/undeadgrishnackh/tictactoe/badge.svg?branch=master)](https://coveralls.io/github/undeadgrishnackh/tictactoe?branch=master)
+
 # TDD classroom example
 This repository is designed to show to a classroom how to spike Agile, TDD and the latest technologies trough a simple kata about the famous Tic Tac Toe game.
 
@@ -38,5 +38,3 @@ The docker container port 9000 is bind loca lly on 9000. Sonarqube is also linke
 
 [travisimg]: https://travis-ci.org/undeadgrishnackh/tictactoe.svg?branch=master
 [travislink]: https://travis-ci.org/undeadgrishnackh/tictactoe
-[coverimg]: https://sonarcloud.io/repos/github/evennia/evennia/badge.svg?branch=master
-[coverlink]: https://sonarcloud.io/organizations/undeadgrishnackh-github/tictactoe?branch=master
