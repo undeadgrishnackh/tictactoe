@@ -18,7 +18,7 @@ import java.util.Random;
 public class Player {
     private String name = null;
     private TicTacToe game = null;
-    private static org.apache.logging.log4j.Logger logger = LogManager.getLogger(Player.class);
+    private static final org.apache.logging.log4j.Logger logger = LogManager.getLogger(Player.class);
 
     public Player(String name) throws BadPlayer {
         String[] playerAllowed = {"X", "O"};
@@ -44,7 +44,6 @@ public class Player {
     /**
      * Generate a random paintMark that satisfy the game rules. In case after this paintMark the game is over
      * throw a game over exception to signal that the game is done.
-     * @throws GameOver
      */
     public void moveRandom() throws BadPlayer, GameOver {
         Random random = new Random();
@@ -54,13 +53,11 @@ public class Player {
             try {
                 r = random.nextInt(3)+1;
                 c = random.nextInt(3)+1;
-                logger.debug("Rondom paintMark is r=" + r + "; c="+ c);
+                logger.debug("Random paintMark is r=" + r + "; c="+ c);
                 this.getGame().paintMark(this.getName(), r, c);
                 break;
             } catch (BadMove ignored) {
                 logger.trace("BadMove is caught but ignored.");
-            } catch (GameOver gameOverExc) {
-                throw gameOverExc;
             }
         }
     }

@@ -45,11 +45,8 @@ public class GameBoard {
         return row >= 1 && row <= ROWS && column >= 1 && column <= COLUMNS;
     }
 
-    boolean isTheCellEmpty(int row, int column){
-        if (isTheCellIntoTheGame( row,  column)){
-            return getGameBoardCell(row, column).equals(" ");
-        }
-        return false;
+    boolean isTheCellEmpty(int row, int column) {
+        return isTheCellIntoTheGame(row, column) && getGameBoardCell(row, column).equals(" ");
     }
 
     boolean isVerticalWon(@NotNull Player player) {

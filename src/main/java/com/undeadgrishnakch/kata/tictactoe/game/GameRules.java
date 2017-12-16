@@ -97,7 +97,7 @@ public class GameRules {
         return player.getGame().getGameBoard().isTheCellIntoTheGame(row, column);
     }
 
-    private boolean isTheCellEmpty(Player player, int row, int column) throws BadMove {
+    private boolean isTheCellEmpty(Player player, int row, int column) {
         return player.getGame().getGameBoard().isTheCellEmpty(row,column);
     }
 

@@ -25,7 +25,7 @@ public class TicTacToe {
     private GameRules gameRules = null;
     private final Player[] players = new Player[2];
     private Player actualPlayer = null;
-    private static Logger logger = LogManager.getLogger(TicTacToe.class);
+    private static final Logger logger = LogManager.getLogger(TicTacToe.class);
 
 
     public TicTacToe() throws BadPlayer {
