@@ -20,6 +20,7 @@ public class GameRules {
      * The class is intentionally designed to improve the readability of the code in a BDD POV.
      */
     public GameRules() {
+        //Do Nothing.
     }
 
     public void move(Player player, int row, int column) throws BadMove, GameOver {

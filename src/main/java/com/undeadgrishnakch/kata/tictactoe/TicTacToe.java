@@ -98,11 +98,11 @@ public class TicTacToe {
     // BOT VS Player
     // Player VS Player
     public void playBotVsBotGame() throws BadPlayer {
-        int round = 0;
+        int gameRound = 0;
         logger.debug("Game BOT VS BOT");
-        for (; round < 9; round++) {
+        for (; gameRound < 9; gameRound++) {
             try {
-                logger.debug("Round " + round);
+                logger.debug("Round " + gameRound);
                 this.getActualRoundPlayer().moveRandom();
             } catch (GameOver gameOverExc) {
                 logger.debug("GAME OVER trapped. Exit signal.");
