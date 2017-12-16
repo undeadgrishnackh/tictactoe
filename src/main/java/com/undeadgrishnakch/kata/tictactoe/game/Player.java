@@ -42,7 +42,7 @@ public class Player {
     }
 
     /**
-     * Generate a random move that satisfy the game rules. In case after this move the game is over
+     * Generate a random paintMark that satisfy the game rules. In case after this paintMark the game is over
      * throw a game over exception to signal that the game is done.
      * @throws GameOver
      */
@@ -54,8 +54,8 @@ public class Player {
             try {
                 r = random.nextInt(3)+1;
                 c = random.nextInt(3)+1;
-                logger.debug("Rondom move is r=" + r + "; c="+ c);
-                this.getGame().move(this.getName(), r, c);
+                logger.debug("Rondom paintMark is r=" + r + "; c="+ c);
+                this.getGame().paintMark(this.getName(), r, c);
                 break;
             } catch (BadMove ignored) {
                 logger.trace("BadMove is caught but ignored.");

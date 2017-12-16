@@ -1,6 +1,5 @@
 package com.undeadgrishnakch.kata.tictactoe.game;
 
-import com.undeadgrishnakch.kata.tictactoe.exception.BadMove;
 import org.jetbrains.annotations.NotNull;
 
 /**
@@ -46,10 +45,11 @@ public class GameBoard {
         return row >= 1 && row <= ROWS && column >= 1 && column <= COLUMNS;
     }
 
-    boolean isTheCellEmpty(int row, int column) throws BadMove {
+    boolean isTheCellEmpty(int row, int column){
         if (isTheCellIntoTheGame( row,  column)){
             return getGameBoardCell(row, column).equals(" ");
-        } else throw new BadMove("Move out of the game!");  //TODO: techdebt - refactor throw mechanism above
+        }
+        return false;
     }
 
     boolean isVerticalWon(@NotNull Player player) {

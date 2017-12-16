@@ -2,7 +2,7 @@
 [![Quality Gate][qualityimg]][qualitylink]
 [![Coverage Status][coverageimg]][coveragelink]
 
-![TIC TAC TOE][ticatactoeimg]
+![TIC TAC TOE][tictactoeimg]
 
 # Test Drive Development Training with a Tic Tac Toe Kata
 

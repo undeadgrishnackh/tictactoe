@@ -40,11 +40,11 @@ class TicTacToeTest {
     @Test
     void playerXWonWithVertical () throws BadPlayer, BadMove, GameOver {
         assertEquals(GameStatus.IN_PROGRESS, ticTacToe.getGameResult());
-        ticTacToe.move("X",1,1);
-        ticTacToe.move("O",2,2);
-        ticTacToe.move("X",2,1);
-        ticTacToe.move("O",3,3);
-        ticTacToe.move("X",3,1);
+        ticTacToe.paintMark("X",1,1);
+        ticTacToe.paintMark("O",2,2);
+        ticTacToe.paintMark("X",2,1);
+        ticTacToe.paintMark("O",3,3);
+        ticTacToe.paintMark("X",3,1);
         assertEquals(GameStatus.PLAYER_X_WON, ticTacToe.getGameResult());
     }
 
@@ -52,12 +52,12 @@ class TicTacToeTest {
     @Test
     void playerOWonWithVertical () throws BadPlayer, BadMove, GameOver {
         assertEquals(GameStatus.IN_PROGRESS, ticTacToe.getGameResult());
-        ticTacToe.move("X",1,1);
-        ticTacToe.move("O",1,2);
-        ticTacToe.move("X",1,3);
-        ticTacToe.move("O",2,2);
-        ticTacToe.move("X",3,3);
-        ticTacToe.move("O",3,2);
+        ticTacToe.paintMark("X",1,1);
+        ticTacToe.paintMark("O",1,2);
+        ticTacToe.paintMark("X",1,3);
+        ticTacToe.paintMark("O",2,2);
+        ticTacToe.paintMark("X",3,3);
+        ticTacToe.paintMark("O",3,2);
         assertEquals(GameStatus.PLAYER_O_WON, ticTacToe.getGameResult());
     }
 
@@ -65,11 +65,11 @@ class TicTacToeTest {
     @Test
     void playerXWonWithHorizontal () throws BadPlayer, BadMove, GameOver {
         assertEquals(GameStatus.IN_PROGRESS, ticTacToe.getGameResult());
-        ticTacToe.move("X",1,1);
-        ticTacToe.move("O",2,2);
-        ticTacToe.move("X",1,2);
-        ticTacToe.move("O",3,3);
-        ticTacToe.move("X",1,3);
+        ticTacToe.paintMark("X",1,1);
+        ticTacToe.paintMark("O",2,2);
+        ticTacToe.paintMark("X",1,2);
+        ticTacToe.paintMark("O",3,3);
+        ticTacToe.paintMark("X",1,3);
         assertEquals(GameStatus.PLAYER_X_WON, ticTacToe.getGameResult());
     }
 
@@ -77,12 +77,12 @@ class TicTacToeTest {
     @Test
     void playerOWonWithHorizontal () throws BadPlayer, BadMove, GameOver {
         assertEquals(GameStatus.IN_PROGRESS, ticTacToe.getGameResult());
-        ticTacToe.move("X",1,1);
-        ticTacToe.move("O",2,2);
-        ticTacToe.move("X",1,2);
-        ticTacToe.move("O",2,3);
-        ticTacToe.move("X",3,3);
-        ticTacToe.move("O",2,1);
+        ticTacToe.paintMark("X",1,1);
+        ticTacToe.paintMark("O",2,2);
+        ticTacToe.paintMark("X",1,2);
+        ticTacToe.paintMark("O",2,3);
+        ticTacToe.paintMark("X",3,3);
+        ticTacToe.paintMark("O",2,1);
         assertEquals(GameStatus.PLAYER_O_WON, ticTacToe.getGameResult());
     }
 
@@ -90,11 +90,11 @@ class TicTacToeTest {
     @Test
     void playerXWonWithDiagonal () throws BadPlayer, BadMove, GameOver {
         assertEquals(GameStatus.IN_PROGRESS, ticTacToe.getGameResult());
-        ticTacToe.move("X",1,1);
-        ticTacToe.move("O",1,2);
-        ticTacToe.move("X",2,2);
-        ticTacToe.move("O",2,3);
-        ticTacToe.move("X",3,3);
+        ticTacToe.paintMark("X",1,1);
+        ticTacToe.paintMark("O",1,2);
+        ticTacToe.paintMark("X",2,2);
+        ticTacToe.paintMark("O",2,3);
+        ticTacToe.paintMark("X",3,3);
         assertEquals(GameStatus.PLAYER_X_WON, ticTacToe.getGameResult());
     }
 
@@ -102,12 +102,12 @@ class TicTacToeTest {
     @Test
     void playerOWonWithDiagonal () throws BadPlayer, BadMove, GameOver {
         assertEquals(GameStatus.IN_PROGRESS, ticTacToe.getGameResult());
-        ticTacToe.move("X",1,1);
-        ticTacToe.move("O",2,2);
-        ticTacToe.move("X",1,2);
-        ticTacToe.move("O",1,3);
-        ticTacToe.move("X",3,3);
-        ticTacToe.move("O",3,1);
+        ticTacToe.paintMark("X",1,1);
+        ticTacToe.paintMark("O",2,2);
+        ticTacToe.paintMark("X",1,2);
+        ticTacToe.paintMark("O",1,3);
+        ticTacToe.paintMark("X",3,3);
+        ticTacToe.paintMark("O",3,1);
         assertEquals(GameStatus.PLAYER_O_WON, ticTacToe.getGameResult());
     }
 
@@ -115,15 +115,15 @@ class TicTacToeTest {
     @Test
     void draw () throws BadPlayer, BadMove, GameOver {
         assertEquals(GameStatus.IN_PROGRESS, ticTacToe.getGameResult());
-        ticTacToe.move("X",1,1);
-        ticTacToe.move("O",1,2);
-        ticTacToe.move("X",1,3);
-        ticTacToe.move("O",2,2);
-        ticTacToe.move("X",2,1);
-        ticTacToe.move("O",2,3);
-        ticTacToe.move("X",3,2);
-        ticTacToe.move("O",3,1);
-        ticTacToe.move("X",3,3);
+        ticTacToe.paintMark("X",1,1);
+        ticTacToe.paintMark("O",1,2);
+        ticTacToe.paintMark("X",1,3);
+        ticTacToe.paintMark("O",2,2);
+        ticTacToe.paintMark("X",2,1);
+        ticTacToe.paintMark("O",2,3);
+        ticTacToe.paintMark("X",3,2);
+        ticTacToe.paintMark("O",3,1);
+        ticTacToe.paintMark("X",3,3);
         assertEquals(GameStatus.DRAW, ticTacToe.getGameResult());
     }
 

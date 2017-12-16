@@ -20,12 +20,12 @@ class GameRulesTest {
     private TicTacToe ticTacToe = null;
 
     /**
-     * method to improve the readability of the tests. The method process the move from the player and compare the
+     * method to improve the readability of the tests. The method process the paintMark from the player and compare the
      * message of the exception with the expected. If no exception is raised, the final assert raise a failure!
      */
     private void ticTacToeCheckBadMoveException(String player, int row, int column, Throwable exceptionExpected) throws BadPlayer {
         try {
-            this.ticTacToe.move(player,row,column);
+            this.ticTacToe.paintMark(player,row,column);
         } catch (BadMove | GameOver exception) {
             assertEquals(exceptionExpected.getMessage(),exception.getMessage());
             return;
@@ -46,7 +46,7 @@ class GameRulesTest {
             throw new BadMove("Isn't your round player X");
         });
 
-        this.ticTacToe.move("X",1,1);
+        this.ticTacToe.paintMark("X",1,1);
         ticTacToeCheckBadMoveException("X",1,2, exceptionExpected);
     }
 
@@ -57,8 +57,8 @@ class GameRulesTest {
             throw new BadMove("Isn't your round player O");
         });
 
-        this.ticTacToe.move("X",1,1);
-        this.ticTacToe.move("O",2,1);
+        this.ticTacToe.paintMark("X",1,1);
+        this.ticTacToe.paintMark("O",2,1);
         ticTacToeCheckBadMoveException("O",1,2,exceptionExpected);
     }
 
@@ -66,53 +66,53 @@ class GameRulesTest {
     @Test
     void playerMoveOutOfGameBoard() throws BadPlayer, BadMove, GameOver {
         Throwable exceptionExpected = assertThrows(BadMove.class, () -> {
-            throw new BadMove("You tried to move outside the game board!");
+            throw new BadMove("You tried to paintMark outside the game board!");
         });
 
         ticTacToeCheckBadMoveException("X",4,4,exceptionExpected);
-        assertAll("Player move outside the game board",
-                () -> assertThrows(BadMove.class, () -> this.ticTacToe.move("X",4,4)),
-                () -> assertThrows(BadMove.class, () -> this.ticTacToe.move("X",0,0)),
-                () -> assertThrows(BadMove.class, () -> this.ticTacToe.move("X",0,4)),
-                () -> assertThrows(BadMove.class, () -> this.ticTacToe.move("X",4,0)),
-                () -> assertThrows(BadMove.class, () -> this.ticTacToe.move("X",-1,-1)));
-        this.ticTacToe.move("X",1,1);
+        assertAll("Player paintMark outside the game board",
+                () -> assertThrows(BadMove.class, () -> this.ticTacToe.paintMark("X",4,4)),
+                () -> assertThrows(BadMove.class, () -> this.ticTacToe.paintMark("X",0,0)),
+                () -> assertThrows(BadMove.class, () -> this.ticTacToe.paintMark("X",0,4)),
+                () -> assertThrows(BadMove.class, () -> this.ticTacToe.paintMark("X",4,0)),
+                () -> assertThrows(BadMove.class, () -> this.ticTacToe.paintMark("X",-1,-1)));
+        this.ticTacToe.paintMark("X",1,1);
         ticTacToeCheckBadMoveException("O",4,4,exceptionExpected);
-        assertAll("Player move outside the game board",
-                () -> assertThrows(BadMove.class, () -> this.ticTacToe.move("O",4,4)),
-                () -> assertThrows(BadMove.class, () -> this.ticTacToe.move("O",0,0)),
-                () -> assertThrows(BadMove.class, () -> this.ticTacToe.move("O",0,4)),
-                () -> assertThrows(BadMove.class, () -> this.ticTacToe.move("O",4,0)),
-                () -> assertThrows(BadMove.class, () -> this.ticTacToe.move("O",-1,-1)));
+        assertAll("Player paintMark outside the game board",
+                () -> assertThrows(BadMove.class, () -> this.ticTacToe.paintMark("O",4,4)),
+                () -> assertThrows(BadMove.class, () -> this.ticTacToe.paintMark("O",0,0)),
+                () -> assertThrows(BadMove.class, () -> this.ticTacToe.paintMark("O",0,4)),
+                () -> assertThrows(BadMove.class, () -> this.ticTacToe.paintMark("O",4,0)),
+                () -> assertThrows(BadMove.class, () -> this.ticTacToe.paintMark("O",-1,-1)));
 
     }
 
-    @DisplayName("Player X move on not empty slot")
+    @DisplayName("Player X paintMark on not empty slot")
     @Test
     void playerXMoveOverO() throws BadMove, BadPlayer, GameOver {
         Throwable exceptionExpected = assertThrows(BadMove.class, () -> {
-            throw new BadMove("You tried to move over a not empty slot!");
+            throw new BadMove("You tried to paintMark over a not empty slot!");
         });
 
-        this.ticTacToe.move("X",1,1);
-        this.ticTacToe.move("O",2,2);
+        this.ticTacToe.paintMark("X",1,1);
+        this.ticTacToe.paintMark("O",2,2);
         ticTacToeCheckBadMoveException("X",2,2,exceptionExpected);
     }
 
-    @DisplayName("Player O move on not empty slot")
+    @DisplayName("Player O paintMark on not empty slot")
     @Test
     void playerOMoveOverX() throws BadMove, BadPlayer, GameOver {
         Throwable exceptionExpected = assertThrows(BadMove.class, () -> {
-            throw new BadMove("You tried to move over a not empty slot!");
+            throw new BadMove("You tried to paintMark over a not empty slot!");
         });
 
-        this.ticTacToe.move("X",1,1);
+        this.ticTacToe.paintMark("X",1,1);
         ticTacToeCheckBadMoveException("O",1,1, exceptionExpected);
-        assertThrows(BadMove.class, () -> this.ticTacToe.move("O",1,1));
+        assertThrows(BadMove.class, () -> this.ticTacToe.paintMark("O",1,1));
     }
 
 
-    @DisplayName("Player O try to move in an end game")
+    @DisplayName("Player O try to paintMark in an end game")
     @Test
     void playerOMoveAfterTheGameEnd () throws BadPlayer, BadMove, GameOver {
         Throwable exceptionExpected = assertThrows(GameOver.class, () -> {
@@ -120,11 +120,11 @@ class GameRulesTest {
         });
 
         assertEquals(GameStatus.IN_PROGRESS, ticTacToe.getGameResult());
-        ticTacToe.move("X",1,1);
-        ticTacToe.move("O",2,1);
-        ticTacToe.move("X",1,2);
-        ticTacToe.move("O",2,2);
-        ticTacToe.move("X",1,3);
+        ticTacToe.paintMark("X",1,1);
+        ticTacToe.paintMark("O",2,1);
+        ticTacToe.paintMark("X",1,2);
+        ticTacToe.paintMark("O",2,2);
+        ticTacToe.paintMark("X",1,3);
         assertEquals(GameStatus.PLAYER_X_WON, ticTacToe.getGameResult());
         ticTacToeCheckBadMoveException("O",2,3,exceptionExpected);
     }

@@ -14,16 +14,16 @@ import com.undeadgrishnakch.kata.tictactoe.status.GameStatus;
  */
 public class GameRules {
     /**
-     * The GameRules engine is a "black box" class that implement the game rules.  Accept or reject the move
-     * from a player. If the move is rejected the class throw a BadMove.
-     * When the game is over the move method will throw a GameOver.
+     * The GameRules engine is a "black box" class that implement the game rules.  Accept or reject the paintMark
+     * from a player. If the paintMark is rejected the class throw a BadMove.
+     * When the game is over the paintMark method will throw a GameOver.
      * The class is intentionally designed to improve the readability of the code in a BDD POV.
      */
     public GameRules() {
         //Do Nothing.
     }
 
-    public void move(Player player, int row, int column) throws BadMove, GameOver {
+    public void paintMark(Player player, int row, int column) throws BadMove, GameOver {
         if (isGameOver(player))
             throw new GameOver();
 
@@ -31,10 +31,10 @@ public class GameRules {
             throw new BadMove("Isn't your round player " + player.getName());
 
         if (!isMovingIntoTheBoard(player, row, column))
-            throw new BadMove("You tried to move outside the game board!");
+            throw new BadMove("You tried to paintMark outside the game board!");
 
         if (!isTheCellEmpty(player, row, column))
-            throw new BadMove("You tried to move over a not empty slot!");
+            throw new BadMove("You tried to paintMark over a not empty slot!");
 
 
         placePlayerPinIntoTheCell(player, row, column);
@@ -90,7 +90,7 @@ public class GameRules {
     }
 
     private boolean isYourRound(Player player) {
-        return player.getName().equals(player.getGame().getActualRoundPlayer().getName());
+        return player.getName().equals(player.getGame().getActualPlayer().getName());
     }
 
     private boolean isMovingIntoTheBoard(Player player, int row, int column) {

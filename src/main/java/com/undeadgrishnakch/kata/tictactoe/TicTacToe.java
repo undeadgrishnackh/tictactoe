@@ -24,7 +24,7 @@ public class TicTacToe {
     private GameStatus gameStatus = null;
     private GameRules gameRules = null;
     private final Player[] players = new Player[2];
-    private Player round = null;
+    private Player actualPlayer = null;
     private static Logger logger = LogManager.getLogger(TicTacToe.class);
 
 
@@ -35,7 +35,7 @@ public class TicTacToe {
         this.gameRules = new GameRules();
         this.players[0] = new Player("X", this);
         this.players[1] = new Player("O", this);
-        this.round = this.players[0];
+        this.actualPlayer = this.players[0];
         logger.trace("Game created.");
     }
 
@@ -45,31 +45,29 @@ public class TicTacToe {
         return this.gameBoard.displayGameBoard();
     }
 
-    public GameBoard getGameBoard() {
-        return gameBoard;
-    }
+    public GameBoard getGameBoard() { return gameBoard; }
 
     //------------------------------------------------------ PLAYERS and ROUND
 
-    private Player getPlayer( String player) throws BadPlayer {
-        switch (player) {
+    private Player getPlayer( String playerName) throws BadPlayer {
+        switch (playerName) {
             case "X":
                 return this.players[0];
             case "O":
                 return this.players[1];
             default:
-                throw new BadPlayer("The player " + player + " doesn't exit!");
+                throw new BadPlayer("The player " + playerName + " doesn't exit!");
         }
     }
 
-    public Player getActualRoundPlayer() {
-        return round;
+    public Player getActualPlayer() {
+        return actualPlayer;
     }
 
-    private void nextRound(){
-        if (getActualRoundPlayer() == this.players[0]) {
-            this.round = this.players[1];
-        } else this.round = this.players[0];
+    private void passGameToNextPlayer(){
+        if (getActualPlayer() == this.players[0]) {
+            this.actualPlayer = this.players[1];
+        } else this.actualPlayer = this.players[0];
     }
 
     //------------------------------------------------------ GAME RESULT
@@ -77,16 +75,14 @@ public class TicTacToe {
         return this.gameStatus.getGameResult();
     }
 
-    public void setGameResult(@NotNull String status) {
-        this.gameStatus.setGameResult(status);
-    }
+    public void setGameResult(@NotNull String status) { this.gameStatus.setGameResult(status); }
 
     //------------------------------------------------------ GAME MOVEMENTS
-    public void move(String player, int row, int column) throws BadMove, BadPlayer, GameOver {
+    public void paintMark(String player, int row, int column) throws BadMove, BadPlayer, GameOver {
         logger.trace("Player " + player + " is moving to r="+row+" c="+column);
-        this.gameRules.move(this.getPlayer(player),row,column);
+        this.gameRules.paintMark(this.getPlayer(player),row,column);
         if (!this.gameRules.isGameOverAfterThisMove(this.getPlayer(player))){
-            nextRound();
+            passGameToNextPlayer();
             logger.debug("\n" + gameBoard.displayGameBoard() + getGameResult() + "\n");
         } else {
             logger.debug("\n" + gameBoard.displayGameBoard() + getGameResult() + "\n" + "GAME OVER! :)\n");
@@ -103,7 +99,7 @@ public class TicTacToe {
         for (; gameRound < 9; gameRound++) {
             try {
                 logger.debug("Round " + gameRound);
-                this.getActualRoundPlayer().moveRandom();
+                this.getActualPlayer().moveRandom();
             } catch (GameOver gameOverExc) {
                 logger.debug("GAME OVER trapped. Exit signal.");
                 break;

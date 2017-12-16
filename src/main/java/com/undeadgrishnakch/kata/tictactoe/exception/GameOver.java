@@ -6,6 +6,6 @@ package com.undeadgrishnakch.kata.tictactoe.exception;
  */
 public class GameOver extends Exception {
     public GameOver() {
-            super("You tried to move after the match is closed!");
+            super("You tried to paintMark after the match is closed!");
         }
 }
