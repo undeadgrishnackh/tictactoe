@@ -15,16 +15,16 @@ cache:
   - "$HOME/.m2/repository"
   - "$HOME/.sonar/cache"
 deploy:
-  - provider: heroku
-    api_key:
-    secure: TLkIfXsonakJo9Y5ecbZMnPaNBB90dfEIzsuWjvvAMVunXIcS/kcS2Qn/yojhP6cQnvDsmcMQyLdk8JV8xlF2+L30L1CauUO83l4WBvjBxQv4E+9LaG1uFH7L11TkM70Bil9+zLSRLojgZfy92o/mAv645iy82Ln9dz0Eotk/Xylrx4XkPrwXz9XowD8yBWoeQCbbwZo0xfuZzwDI7stK9tVyBfzpu8MbPsUtYGKnRKjQArO1+DJgZ6KCMrHnc8zAYeA5wXlAv5NRJ3lD1DBpBOpypARTgXfURe+eY82HZjMtozfxr1f5F7KZSehUTuG4E8+0Wy7WMLc26U4usg9acKUY2PFKDVEoV49fe++n/CA/Vc3409QRTgY4AFhmv1bCibb5UE4JbrFhk/QvtL5XhkxXC3I5jdbFSSp5w1rA98J2dt0E0ZSUIUR8vRAUbK8ttboZMfD/o1eH+OBdXGphI5E4m1xZvTfskKRJuHaZcejktolvDoG/A29FyYB2QZVkTHGLtXpFinen6303vVut7TQVJMbNf+p82hgMm54IogokZ/PihmeE9gypALtnVoc4CLNWT1LR3mVTVMy/Pax6A191A6wD/5CzKuCudNt6C3jIRE2eBHqqUDjgtgzRhDuouJpw8Vdk4S43TQ8LRCH6Tt9cSIS2s4PBiugi3CUAyw=
-    app: tictactoe
-    on:
-      repo: undeadgrishnackh/tictactoe
-  - provider: pages
-    skip_cleanup: true
-    github_token: $GITHUB_TOKEN # Set in travis-ci.org dashboard
-    on:
-      branch: master
+- provider: heroku
+  api_key:
+  secure: TLkIfXsonakJo9Y5ecbZMnPaNBB90dfEIzsuWjvvAMVunXIcS/kcS2Qn/yojhP6cQnvDsmcMQyLdk8JV8xlF2+L30L1CauUO83l4WBvjBxQv4E+9LaG1uFH7L11TkM70Bil9+zLSRLojgZfy92o/mAv645iy82Ln9dz0Eotk/Xylrx4XkPrwXz9XowD8yBWoeQCbbwZo0xfuZzwDI7stK9tVyBfzpu8MbPsUtYGKnRKjQArO1+DJgZ6KCMrHnc8zAYeA5wXlAv5NRJ3lD1DBpBOpypARTgXfURe+eY82HZjMtozfxr1f5F7KZSehUTuG4E8+0Wy7WMLc26U4usg9acKUY2PFKDVEoV49fe++n/CA/Vc3409QRTgY4AFhmv1bCibb5UE4JbrFhk/QvtL5XhkxXC3I5jdbFSSp5w1rA98J2dt0E0ZSUIUR8vRAUbK8ttboZMfD/o1eH+OBdXGphI5E4m1xZvTfskKRJuHaZcejktolvDoG/A29FyYB2QZVkTHGLtXpFinen6303vVut7TQVJMbNf+p82hgMm54IogokZ/PihmeE9gypALtnVoc4CLNWT1LR3mVTVMy/Pax6A191A6wD/5CzKuCudNt6C3jIRE2eBHqqUDjgtgzRhDuouJpw8Vdk4S43TQ8LRCH6Tt9cSIS2s4PBiugi3CUAyw=
+  app: tictactoe
+  on:
+    repo: undeadgrishnackh/tictactoe
+- provider: pages
+  skip_cleanup: true
+  github_token: $GITHUB_TOKEN # Set in travis-ci.org dashboard
+  on:
+    branch: master
 after_success:
 - mvn clean test jacoco:report coveralls:report
