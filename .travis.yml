@@ -15,10 +15,14 @@ cache:
   - "$HOME/.m2/repository"
   - "$HOME/.sonar/cache"
 deploy:
-  provider: pages
-  skip_cleanup: true
-  github_token: "$GITHUB_TOKEN"
-  on:
-    branch: master
+#  - provider: pages
+#    skip_cleanup: true
+#    github_token: "$GITHUB_TOKEN"
+#    on:
+#      branch: master
+  provider: heroku
+  api_key: "2fd9f806-3717-48df-a147-28449b9a402e"
+  secure: "nzmRp1H7Siar5EgmEKj5H7tPhdGIqGJpRnf+UIYPr0Qzz9j9jlBhsQzajsLsfmd2jBlz/QasKp4hsrF+1U6dZQ7ZeqiuHZ03qwH5vEWxDcyQbdGeUOO9/wLtbIYQbmTykdCLOAkwdx9YbJ8+C9jwW/p2bTqnSH+mnupJFXMpv30sO/RXI53OpNVKx9cJIb8y9r7CsUE4J7wapsPwZwvlsPLXgdOW7F9DIr1ExSNycxUagosG5NE/i8DBBsubY3UVEo8yeYiqPo6vw1ac+1TWfw6IGAvOTmGdREAYo7OzfP6k+dJrFWq/gG/5NcZj2A+G4C0ksNYmQqGD5NRTuq1GEzayz6SCamkcEcdo176bKTgV+N11/pceXY6QgnL3ncHEM//iaXrS9MYVhOKCElmifxu87hbc3yvxKm1lTDh0M4P8iLuRv2fPfTMy/wOZJRc5FszO3zhTnbmspVqsI6t3gaV2YJLMp/KmxRd1Dz1vmHYl9M9C7wRiKfEAw3+ikl6Oc+6OtqyZV4ReZm65avTdEUHmhUnY6uC+IjcZK8VsIrFNMcl1BZksOjmy6E3JYQUp9/sUqAZBURdvP9LEyf14h2zKo+fbJhP0qT2ORUeJfK4SdmM1I21oMjgI6Lc7EUOgERi8/Aqb3MjchlEe7N4gLCJUJu1xnPFd0BmgdzdrTHc="
+  app: tictactoe
 after_success:
 - mvn clean test jacoco:report coveralls:report
