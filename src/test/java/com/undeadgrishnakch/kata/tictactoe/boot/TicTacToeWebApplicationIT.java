@@ -1,7 +1,12 @@
 package com.undeadgrishnakch.kata.tictactoe.boot;
 
-import org.junit.jupiter.api.*;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.junit.platform.runner.JUnitPlatform;
+import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.embedded.LocalServerPort;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -11,10 +16,8 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import java.net.URL;
 
-import static org.hamcrest.Matchers.equalTo;
 
-@Disabled
-//@RunWith(JUnitPlatform.class)
+@RunWith(JUnitPlatform.class)
 @ExtendWith(SpringExtension.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 public class TicTacToeWebApplicationIT {
@@ -37,6 +40,6 @@ public class TicTacToeWebApplicationIT {
     public void iAmAlive() {
         ResponseEntity<String> response = template.getForEntity(base.toString(),
                 String.class);
-        Assertions.assertEquals(response.getBody(), equalTo("I'm ALIVE!"));
+        Assertions.assertEquals("I'm ALIVE!", response.getBody());
     }
 }
