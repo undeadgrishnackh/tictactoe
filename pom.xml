@@ -175,6 +175,16 @@
             </exclusions>
         </dependency>
 
+        <!-- Workaround to use Junit5 with SpringBoot 1.59
+             In theory in version 2 it's fixed -->
+        <dependency>
+            <groupId>com.github.sbrannen</groupId>
+            <artifactId>spring-test-junit5</artifactId>
+            <version>1.0.0.M4</version>
+            <scope>test</scope>
+            <type>jar</type>
+        </dependency>
+
     </dependencies>
 
     <build>
@@ -263,4 +273,13 @@
             </plugin>
         </plugins>
     </build>
+
+    <!-- Repository to workaround the current version of SpringBoot that doesn't work
+         with JUNIT5 -->
+    <repositories>
+        <repository>
+            <id>jitpack.io</id>
+            <url>https://jitpack.io</url>
+        </repository>
+    </repositories>
 </project>
