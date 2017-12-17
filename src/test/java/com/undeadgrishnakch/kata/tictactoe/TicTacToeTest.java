@@ -129,7 +129,7 @@ class TicTacToeTest {
 
     @DisplayName("BDD - BOT VS BOT Games")
     @Test
-    void botVsBot () throws BadPlayer, BadMove, GameOver {
+    void botVsBot () throws BadPlayer {
         assertEquals(GameStatus.IN_PROGRESS, ticTacToe.getGameResult());
         ticTacToe.playBotVsBotGame();
         assertTrue(isGameCorrectlyOver());

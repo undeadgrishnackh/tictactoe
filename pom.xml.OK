@@ -11,7 +11,7 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>1.5.9.RELEASE</version>
+        <version>1.5.9.RELEASE</version> <!-- 1.5.9.RELEASE -->
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
 
@@ -33,7 +33,7 @@
         <sonar.jacoco.version>0.7.9</sonar.jacoco.version>
         <maven-surefire-plugin.version>2.19.1</maven-surefire-plugin.version>
         <!-- Log4J -->
-        <log4j.version>2.8</log4j.version>
+        <log4j.version>2.8.2</log4j.version>
         <log4j2-logstash-layout.version>0.3</log4j2-logstash-layout.version>
     </properties>
 
@@ -48,11 +48,6 @@
         </dependency>
         <dependency>
             <groupId>org.junit.jupiter</groupId>
-            <artifactId>junit-jupiter-engine</artifactId>
-            <version>${junit.jupiter.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-params</artifactId>
             <version>${junit.jupiter.version}</version>
             <scope>test</scope>
@@ -64,9 +59,10 @@
             <scope>test</scope>
         </dependency>
         <dependency>
-            <groupId>org.junit.platform</groupId>
-            <artifactId>junit-platform-engine</artifactId>
-            <version>1.0.0-M6</version>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-engine</artifactId>
+            <version>5.0.0-M6</version>
+            <scope>test</scope>
         </dependency>
         <!--<dependency> USELESS with new IntelliJ 2017.3
             <groupId>org.junit.vintage</groupId>
@@ -87,94 +83,16 @@
             <version>15.0</version>
         </dependency>
 
-
-        <!-- LOG4J -->
         <dependency>
             <groupId>org.apache.logging.log4j</groupId>
             <artifactId>log4j-core</artifactId>
             <version>${log4j.version}</version>
         </dependency>
         <dependency>
-            <groupId>org.apache.logging.log4j</groupId> <!-- Necessary to fic the parent Spring -->
-            <artifactId>log4j-api</artifactId>
-            <version>${log4j.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.logging.log4j</groupId> <!-- Necessary to fic the parent Spring -->
-            <artifactId>log4j-jcl</artifactId>
-            <version>${log4j.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.logging.log4j</groupId> <!-- Necessary to fic the parent Spring -->
-            <artifactId>log4j-slf4j-impl</artifactId>
-            <version>${log4j.version}</version>
-        </dependency>
-
-        <!-- ELK -->
-        <dependency>
-            <groupId>com.vlkan.log4j2</groupId>
+            <groupId>com.vlkan.log4j2</groupId>  <!-- ELK -->
             <artifactId>log4j2-logstash-layout</artifactId>
             <version>${log4j2-logstash-layout.version}</version>
         </dependency>
-
-
-
-        <!-- Spring -->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-actuator</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-data-jpa</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-security</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-devtools</artifactId>
-            <scope>runtime</scope>
-        </dependency>
-        <dependency>
-            <groupId>com.h2database</groupId>
-            <artifactId>h2</artifactId>
-            <scope>runtime</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
-            <optional>true</optional>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.security</groupId>
-            <artifactId>spring-security-test</artifactId>
-            <scope>test</scope>
-        </dependency>
-        <!--<dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-autoconfigure</artifactId>
-            <version>1.5.9.RELEASE</version>
-        </dependency>-->
-
-        <!-- tag::tests[] -->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
-            <scope>test</scope>
-            <exclusions>
-                <exclusion>
-                    <groupId>junit</groupId>
-                    <artifactId>junit</artifactId>
-                </exclusion>
-            </exclusions>
-        </dependency>
-
     </dependencies>
 
     <build>
@@ -189,17 +107,16 @@
             </plugin>
             <plugin>
                 <artifactId>maven-surefire-plugin</artifactId>
-                <version>${maven-surefire-plugin.version}</version> <!--2.19.1-->
+                <version>${maven-surefire-plugin.version}</version>
                 <configuration>
                     <includes>
                         <include>**/Test*.java</include>
                         <include>**/*Test.java</include>
                         <include>**/*Tests.java</include>
                         <include>**/*TestCase.java</include>
-                        <!--<include>**/*IT.java</include>-->
                     </includes>
                     <properties>
-                        <!--<includeTags>fast</includeTags>-->
+                        <!-- <includeTags>fast</includeTags> -->
                         <excludeTags>slow</excludeTags>
                     </properties>
                 </configuration>
@@ -207,12 +124,7 @@
                     <dependency>
                         <groupId>org.junit.platform</groupId>
                         <artifactId>junit-platform-surefire-provider</artifactId>
-                        <version>1.0.0-M6</version>
-                    </dependency>
-                    <dependency>
-                        <groupId>org.junit.jupiter</groupId>
-                        <artifactId>junit-jupiter-engine</artifactId>
-                        <version>5.0.0-M6</version>
+                        <version>${junit.platform.version}</version>
                     </dependency>
                 </dependencies>
             </plugin>
@@ -240,26 +152,6 @@
                 <configuration>
                     <repoToken>pyjytRsUSgYXuHibdPua04pCQwS2uNYAW</repoToken>
                 </configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-            </plugin>
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-            </plugin>
-
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-surefire-plugin</artifactId>
-                <dependencies>
-                    <dependency>
-                        <groupId>org.junit.platform</groupId>
-                        <artifactId>junit-platform-surefire-provider</artifactId>
-                        <version>1.0.2</version>
-                    </dependency>
-                </dependencies>
             </plugin>
         </plugins>
     </build>
