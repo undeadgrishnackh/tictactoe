@@ -15,13 +15,13 @@ cache:
   - "$HOME/.m2/repository"
   - "$HOME/.sonar/cache"
 deploy:
-#  - provider: pages
-#    skip_cleanup: true
-#    github_token: "$GITHUB_TOKEN"
-#    on:
-#      branch: master
-  provider: heroku
-  api_key:
-    secure: "g768chRF/Y3bMRRUszKWWVUF7JEVbPe0bYdPMCu0mlZvKUHohaPn1jGSjinXRiameRTSGCNqRM+a9reyJiDI+V1DQt0FyhHcG4sZ9wB/EAjXY7Ka+D77EuduS5N2inF300Q5jy0C8+HxNDQWTz1xRIaWIYyH7MIT/er8BokhhqccN7e+0we7bLWva9NUKmU6lq/VnqATD59u5CXPOBV57VHMSMDOOk+f3rGXtzXhCTWK+lswhYMwoHxPyCdVZNxOJF9EMPFi8kpp/W8lB77Q6NZKBLLNgmlc8uO2di4l2izpF9Ru0wvhlV1UCFzbGdVrHxLC6EXQauvTYoZxqPqS0eUB9V/ezCmq0YmINMV6unXN9kk2iHUBSVq3VafzCmfL0mhQ5szvnabmIq2TxMlhEVyWTDTPtgJX6jnY/Gx2S/yGHpSVKmYcHks2pnXz8LfdPJPBj8rKhviurLivFQd8KD0vP0fEtaOQG+LW5rLU75B5PoCxk39VMTnTRkoFyoJB1MVbP38xpea5ItX/IETgE8L7eik/2IWJWAslEL1utzm7JChpffcm3s7P8lpu4dIOJESUa4ytfwj520ZYjJpjg+VhuqsxEt/yRHwcJuzYV+HSiAb0B75YQHyS7yHQip4LKlWcJZVGZ9iy7P5CWKHSNt+eguT/d7PhgaJaPe1GefA="
+  - provider: pages
+    skip_cleanup: true
+    github_token: "$GITHUB_TOKEN"
+    on:
+      branch: master
+  - provider: heroku
+    api_key:
+      secure: V9jKqztHb/MdYNTpn0HbvBu/+usKvm94FuUKx207gSoxBfj9LRjQKn77+RjUJ9L1qLssG/9517ufDZfdkOVPYb7TSHDnrsTHS7wqp6Dz27CZ73f/p4maLSAbEvbQ618fqcGSxNeXQAawgz8bYnT1Fl28GMTLDrG5RKeEm9vo9gccJgT+6Zm8Eg4KAmeLoUOzuKSkm9Fcxaau9X7Q8niQE6YnVdkPGSTKGpuVJuQ0DlZTIOgld2+oPpcQQ71ZMHCpusHmBt4xr3yWug+NrEfF2K3pVwLbu02XpLPd2W8AZfEmZS75S0drU9KKbbO4qnrc/rcwmBHAZ1MV/sKWvxDtU05QTGsAOoZJzaFSwERJ8F0M/ljSl0Lj2glMuvbBd32883IAdfMEw921URFfb4f4hQX5j7AAvyYOo/z3g5UB8YX4u5S0ReayVALUUyxiCxx0tviSvfGBsK+Jr5CXv+UsdrgW5qBFaGdEhhWZOWOEC8dSJKOkT+oMhW806+TprQzIUpkLZ0SppE7DUO+rSJO9iGIm95rIfVONqrkgwWc4gzE+eYYyzL132SofTmLVUM08ddZPOdmCA31JVZGOu/ooWdoZtZBBEbBPYRd5CNqD+GiIuHRdx9unHVc0OizZIhGVW77nyr9i+r5c4efDVud/dowi5b+nRX9MlOQ3XLIkorc=
 after_success:
 - mvn clean test jacoco:report coveralls:report
