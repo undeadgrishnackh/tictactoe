@@ -15,18 +15,13 @@ cache:
   - "$HOME/.m2/repository"
   - "$HOME/.sonar/cache"
 deploy:
-# Commented due to an auth error on heroku - workaround --> deploy from github integrated in heroku
-#- provider: heroku
-#  api_key:
-#    secure: "jDthnWG2eKwKlTT/m0qwP2k/nib3/FwdtMEmymDe5ANRFFEOHuN65otX/SRAqOW12jlOTzCScw8nIP4ujsbsSMoMQwBXan/g0McjV0jqJ+06d2aHy6WxGgWLOdZa78FQ6+Z6YrH9Fb4h/hcrt4cVR2WeX80NG18T1ihh9z7Bqtz2h2sU99QJXZe5ZtKBVzquJS6BcnpmyWaYmn0pEaSABwPlCPbxxwC8w7fYcTAugtgIxFmBlUZrvM4+VawpZpZ/h1rsPG0OWlWGuP9PGMhvE+LkfBDGXlfJ+/MmryRxfhO2crS7jG2FmD/I3bhmSi/7L+ixTSKJpqx51fmLuiZEieWf77o4uvUNA3vP8BFQd2sMKhTSc4yqqtlJv/hXSqhZj3hB+HDuMohpKH0bkvQ+iBV5BI0e8xqs5vU3KtJfU0sj5btVn65rEl8PAYH1WC2kcEdgGQVMYlKWYh6ouWaXM0B5CV6gO9QTQJ8wpeTPgG6jOu/VhZmfRW56EVaz3+YozkXvPsrOOeM9HMk5V6vEJ8bzqEjQ3P6AgvBcwyuybYhtzSl3LOL6o2/x325wGAAS9DZUymb2pHU3DIL9oThP9MCLmo5BkZ/RDByjKaRzI0grrlclvUtgZOIkhfTEH6w90PTUF05zoKgKUvyO6WI2LFDaVE8cCeGi+leZpqk6KA8="
-#  app: tictactoe
-#  on:
-#    repo: undeadgrishnackh/tictactoe
-#- provider: pages
-  provider: pages
+- provider: pages
   skip_cleanup: true
-  github_token: $GITHUB_TOKEN # Set in travis-ci.org dashboard
+  github_token: "$GITHUB_TOKEN"
   on:
     branch: master
+- provider: heroku
+  api_key: "2fd9f806-3717-48df-a147-28449b9a402e"
+  secure: "nzmRp1H7Siar5EgmEKj5H7tPhdGIqGJpRnf+UIYPr0Qzz9j9jlBhsQzajsLsfmd2jBlz/QasKp4hsrF+1U6dZQ7ZeqiuHZ03qwH5vEWxDcyQbdGeUOO9/wLtbIYQbmTykdCLOAkwdx9YbJ8+C9jwW/p2bTqnSH+mnupJFXMpv30sO/RXI53OpNVKx9cJIb8y9r7CsUE4J7wapsPwZwvlsPLXgdOW7F9DIr1ExSNycxUagosG5NE/i8DBBsubY3UVEo8yeYiqPo6vw1ac+1TWfw6IGAvOTmGdREAYo7OzfP6k+dJrFWq/gG/5NcZj2A+G4C0ksNYmQqGD5NRTuq1GEzayz6SCamkcEcdo176bKTgV+N11/pceXY6QgnL3ncHEM//iaXrS9MYVhOKCElmifxu87hbc3yvxKm1lTDh0M4P8iLuRv2fPfTMy/wOZJRc5FszO3zhTnbmspVqsI6t3gaV2YJLMp/KmxRd1Dz1vmHYl9M9C7wRiKfEAw3+ikl6Oc+6OtqyZV4ReZm65avTdEUHmhUnY6uC+IjcZK8VsIrFNMcl1BZksOjmy6E3JYQUp9/sUqAZBURdvP9LEyf14h2zKo+fbJhP0qT2ORUeJfK4SdmM1I21oMjgI6Lc7EUOgERi8/Aqb3MjchlEe7N4gLCJUJu1xnPFd0BmgdzdrTHc="
 after_success:
 - mvn clean test jacoco:report coveralls:report
