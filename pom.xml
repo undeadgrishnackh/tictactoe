@@ -26,6 +26,8 @@
         <junit.platform.version>1.0.0-M6</junit.platform.version>
         <maven-compiler-plugin.version>3.6.1</maven-compiler-plugin.version>
         <!-- Sonar -->
+        <sonar.sources>src/main</sonar.sources>
+        <sonar.tests>src/test</sonar.tests>
         <sonar.java.coveragePlugin>jacoco</sonar.java.coveragePlugin>
         <sonar.dynamicAnalysis>reuseReports</sonar.dynamicAnalysis>
         <sonar.jacoco.reportPath>${project.basedir}/target/jacoco.exec</sonar.jacoco.reportPath>
@@ -241,7 +243,7 @@
                         <include>**/*Test.java</include>
                         <include>**/*Tests.java</include>
                         <include>**/*TestCase.java</include>
-                        <!--<include>**/*IT.java</include>-->
+                        <include>**/*IT.java</include>
                     </includes>
                     <properties>
                         <!--<includeTags>fast</includeTags>-->
