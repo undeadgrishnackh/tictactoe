@@ -1,4 +1,4 @@
-package com.undeadgrishnakch.kata.tictactoe.boot;
+package com.undeadgrishnakch.kata.tictactoe.webapp;
 
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;

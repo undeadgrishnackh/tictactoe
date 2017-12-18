@@ -38,9 +38,9 @@ At the end of the docker-compose build process, the local devops infrastructure 
 
 ## CLOUD ENV
 The cloud environment instead is based on a compound of free SaaS provider:
-* _Automation Server_: TarvisCI
-* _Code Analyzer_: SonarCloud and CoverALLs
-* _Deployment_: Heroku
+* _Automation Server_: [TarvisCI](https://travis-ci.org/undeadgrishnackh/tictactoe)
+* _Code Analyzer_: [SonarCloud](https://sonarcloud.io/dashboard?id=com.undeadgrishnackh%3Atictactoe) and [CoverALLs](https://coveralls.io/github/undeadgrishnackh/tictactoe?branch=master)
+* _Deployment_: [Heroku](https://damp-inlet-50606.herokuapp.com/areYouAlive)
 
 [travisimg]: https://travis-ci.org/undeadgrishnackh/tictactoe.svg?branch=master
 [travislink]: https://travis-ci.org/undeadgrishnackh/tictactoe

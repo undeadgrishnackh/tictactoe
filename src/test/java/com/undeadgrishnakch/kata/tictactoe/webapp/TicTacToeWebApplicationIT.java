@@ -1,7 +1,6 @@
-package com.undeadgrishnakch.kata.tictactoe.boot;
+package com.undeadgrishnakch.kata.tictactoe.webapp;
 
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -30,16 +29,23 @@ public class TicTacToeWebApplicationIT {
     @Autowired
     private TestRestTemplate template;
 
-    @BeforeEach
-    public void setUp() throws Exception {
-        this.base = new URL("http://localhost:" + port + "/areYouAlive");
-    }
-
     @DisplayName("I'm ALIVE - REAL rnd port!")
     @Test
-    public void iAmAlive() {
+    public void iAmAlive() throws Exception {
+        this.base = new URL("http://localhost:" + port + "/areYouAlive");
         ResponseEntity<String> response = template.getForEntity(base.toString(),
                 String.class);
         Assertions.assertEquals("I'm ALIVE!", response.getBody());
     }
+
+    @DisplayName("Game Start - REAL rnd port!")
+    @Test
+    public void gameStart() throws Exception {
+        this.base = new URL("http://localhost:" + port + "/");
+        ResponseEntity<String> response = template.getForEntity(base.toString(),
+                String.class);
+        Assertions.assertEquals(" | | \n-+-+-\n | | \n-+-+-\n | | \n", response.getBody());
+    }
+
+
 }

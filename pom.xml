@@ -25,7 +25,11 @@
         <junit.jupiter.version>5.0.0-M6</junit.jupiter.version>
         <junit.platform.version>1.0.0-M6</junit.platform.version>
         <maven-compiler-plugin.version>3.6.1</maven-compiler-plugin.version>
-        <!-- Sonar -->
+        <junit.platform.surefire.version>1.0.2</junit.platform.surefire.version>
+        <!-- TEST Frameworks and Junit5_springBoot Fix -->
+        <com.github.sbrannen.version>1.0.0.M6</com.github.sbrannen.version>
+        <mockito-core.version>2.7.17</mockito-core.version>
+        <!-- Sonar and test coverage plugins-->
         <sonar.sources>src/main</sonar.sources>
         <sonar.tests>src/test</sonar.tests>
         <sonar.java.coveragePlugin>jacoco</sonar.java.coveragePlugin>
@@ -37,6 +41,10 @@
         <!-- Log4J -->
         <log4j.version>2.8</log4j.version>
         <log4j2-logstash-layout.version>0.3</log4j2-logstash-layout.version>
+
+        <!-- Build - Version and Date -->
+        <timestamp>${maven.build.timestamp}</timestamp>
+        <maven.build.timestamp.format>yyyyMMdd_HHmm</maven.build.timestamp.format>
     </properties>
 
 
@@ -64,18 +72,18 @@
         <dependency>
             <groupId>org.junit.platform</groupId>
             <artifactId>junit-platform-launcher</artifactId>
-            <version>1.0.0-M6</version>
+            <version>${junit.platform.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.junit.platform</groupId>
             <artifactId>junit-platform-engine</artifactId>
-            <version>1.0.0-M6</version>
+            <version>${junit.platform.version}</version>
         </dependency>
         <dependency>
             <groupId>org.junit.platform</groupId>
             <artifactId>junit-platform-runner</artifactId>
-            <version>1.0.0-M4</version>
+            <version>${junit.platform.version}</version>
             <scope>test</scope>
             <exclusions>
                 <exclusion>
@@ -87,7 +95,7 @@
         <dependency>
             <groupId>org.junit.platform</groupId>
             <artifactId>junit-platform-surefire-provider</artifactId>
-            <version>1.0.0-M6</version>
+            <version>${junit.platform.surefire.version}</version> <!-- Thix version fix the unit tests aggregation numbers; 1.0.0-M6 bugged-->
             <scope>test</scope>
         </dependency>
 
@@ -121,7 +129,7 @@
             <version>${log4j.version}</version>
         </dependency>
 
-        <!-- ELK -->
+        <!-- Log4J and ELK provider-->
         <dependency>
             <groupId>com.vlkan.log4j2</groupId>
             <artifactId>log4j2-logstash-layout</artifactId>
@@ -131,7 +139,7 @@
 
 
         <!-- Spring -->
-        <!-- Fix the bug LoggerFactory is not a Logback LoggerContext -->
+        <!-- This is the Fix for the bug: "LoggerFactory is not a Logback LoggerContext" -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter</artifactId>
@@ -179,21 +187,16 @@
         </dependency>
         <!-- Temporary disabled to configure the right security mechanism
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-security</artifactId>
+            <groupId>org.springframework.webapp</groupId>
+            <artifactId>spring-webapp-starter-security</artifactId>
         </dependency>
         <dependency>
             <groupId>org.springframework.security</groupId>
             <artifactId>spring-security-test</artifactId>
             <scope>test</scope>
         </dependency> -->
-        <!--<dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-autoconfigure</artifactId>
-            <version>1.5.9.RELEASE</version>
-        </dependency>-->
 
-        <!-- tag::tests[] -->
+        <!-- tag::tests[] with springBoot-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
@@ -205,26 +208,28 @@
                 </exclusion>
             </exclusions>-->
         </dependency>
-
         <!-- Workaround to use Junit5 with SpringBoot 1.59
              In theory in version 2 it's fixed -->
         <dependency>
             <groupId>com.github.sbrannen</groupId>
             <artifactId>spring-test-junit5</artifactId>
-            <version>1.0.0.M6</version>
+            <version>${com.github.sbrannen.version}</version>
             <scope>test</scope>
             <type>jar</type>
         </dependency>
         <dependency>
             <groupId>org.mockito</groupId>
             <artifactId>mockito-core</artifactId>
-            <version>2.7.17</version>
+            <version>${mockito-core.version}</version>
             <scope>test</scope>
             <type>jar</type>
         </dependency>
     </dependencies>
 
     <build>
+        <!-- Name setup wth the incremental version number on every build -->
+        <finalName>${project.artifactId}-${timestamp}</finalName>
+
         <plugins>
             <plugin>
                 <artifactId>maven-compiler-plugin</artifactId>
@@ -254,12 +259,12 @@
                     <dependency>
                         <groupId>org.junit.platform</groupId>
                         <artifactId>junit-platform-surefire-provider</artifactId>
-                        <version>1.0.0-M6</version>
+                        <version>${junit.platform.surefire.version}</version>
                     </dependency>
                     <dependency>
                         <groupId>org.junit.jupiter</groupId>
                         <artifactId>junit-jupiter-engine</artifactId>
-                        <version>5.0.0-M6</version>
+                        <version>${junit.jupiter.version}</version>
                     </dependency>
                 </dependencies>
             </plugin>
@@ -281,18 +286,6 @@
                 </executions>
             </plugin>
             <plugin>
-                <groupId>org.eluder.coveralls</groupId>
-                <artifactId>coveralls-maven-plugin</artifactId>
-                <version>4.3.0</version>
-                <configuration>
-                    <repoToken>pyjytRsUSgYXuHibdPua04pCQwS2uNYAW</repoToken>
-                </configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-            </plugin>
-            <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-failsafe-plugin</artifactId>
                 <executions>
@@ -304,19 +297,23 @@
                     </execution>
                 </executions>
             </plugin>
+
+            <!-- To plubish the coverage on coveralls -->
             <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-surefire-plugin</artifactId>
-                <dependencies>
-                    <dependency>
-                        <groupId>org.junit.platform</groupId>
-                        <artifactId>junit-platform-surefire-provider</artifactId>
-                        <version>1.0.2</version>
-                    </dependency>
-                </dependencies>
+                <groupId>org.eluder.coveralls</groupId>
+                <artifactId>coveralls-maven-plugin</artifactId>
+                <version>4.3.0</version>
+                <configuration>
+                    <repoToken>pyjytRsUSgYXuHibdPua04pCQwS2uNYAW</repoToken>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
         </plugins>
     </build>
+
 
     <!-- Repository to workaround the current version of SpringBoot that doesn't work
          with JUNIT5 -->
