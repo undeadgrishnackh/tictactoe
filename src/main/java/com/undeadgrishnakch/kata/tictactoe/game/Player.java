@@ -45,7 +45,7 @@ public class Player {
      * Generate a random paintMark that satisfy the game rules. In case after this paintMark the game is over
      * throw a game over exception to signal that the game is done.
      */
-    public void moveRandom() throws BadPlayer, GameOver {
+    public void moveRandom() throws GameOver, BadPlayer {
         Random random = new Random();
         int r;
         int c;

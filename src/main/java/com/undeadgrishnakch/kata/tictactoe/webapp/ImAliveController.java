@@ -1,5 +1,8 @@
 package com.undeadgrishnakch.kata.tictactoe.webapp;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import org.json.simple.JSONObject;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -8,21 +11,25 @@ import java.security.ProtectionDomain;
 
 @RestController
 public class ImAliveController {
+    private static final Logger logger = LogManager.getLogger(ImAliveController.class);
 
     @RequestMapping("/areYouAlive")
     public String iAmAlive() {
-
-        Class c= null; // or any other way to obtain a Class object
+        String jarName = "";
+        JSONObject jsonReply = new JSONObject();
         try {
-            c = Class.forName("com.undeadgrishnakch.kata.tictactoe.webapp.ImAliveController");
+            Class c = Class.forName("com.undeadgrishnakch.kata.tictactoe.webapp.ImAliveController");
             ProtectionDomain pd= c.getProtectionDomain();
             CodeSource cs= pd.getCodeSource();
-            System.out.println("JAR_NAME=" + cs.getLocation());
+            jarName = cs.getLocation().toString();
+            logger.info("JAR_NAME=" + jarName);
         } catch (ClassNotFoundException e) {
-            System.out.println("JAR_NAME=NONE");
+            logger.error("JAR_NAME=NONE");
         }
 
-        return "I'm ALIVE!";
+        jsonReply.put("reply","I'm ALIVE!");
+        jsonReply.put("jarName",jarName);
+        return jsonReply.toJSONString();
     }
 
 }

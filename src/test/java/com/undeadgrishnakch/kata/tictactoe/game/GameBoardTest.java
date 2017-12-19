@@ -13,9 +13,9 @@ import org.junit.jupiter.api.Test;
  * Created by michele.brissoni@ibm.com on 29/07/2017.
  */
 class GameBoardTest {
-    @DisplayName("Empty Game Board Creation")
+    @DisplayName("ASCII Empty Game Board Creation and Display")
     @Test
-    void createGameBoard() throws BadPlayer {
-        Assertions.assertEquals(" | | \n-+-+-\n | | \n-+-+-\n | | \n", new TicTacToe().showGameBoard());
+    void createAndDisplayGameBoardASCII() throws BadPlayer {
+        Assertions.assertEquals(" | | \n-+-+-\n | | \n-+-+-\n | | \n", new TicTacToe().showGameBoardASCII());
     }
 }

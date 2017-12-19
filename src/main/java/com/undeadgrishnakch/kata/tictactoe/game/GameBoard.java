@@ -1,6 +1,7 @@
 package com.undeadgrishnakch.kata.tictactoe.game;
 
 import org.jetbrains.annotations.NotNull;
+import org.json.simple.JSONObject;
 
 /**
  * GameBoard class to create the playground and the
@@ -18,7 +19,7 @@ public class GameBoard {
         this.board = new String[][] {{" "," "," "},{" "," "," "},{" "," "," "}};
     }
 
-    public String displayGameBoard(){
+    public String displayGameBoardASCII(){
         return getGameBoardCell(1,1) + "|" +
                 getGameBoardCell(1,2) + "|" +
                 getGameBoardCell(1,3) +
@@ -30,6 +31,21 @@ public class GameBoard {
                 getGameBoardCell(3,1) + "|" +
                 getGameBoardCell(3,2) + "|" +
                 getGameBoardCell(3,3) + "\n";
+    }
+
+    public String displayGameBoardJSON() {
+        JSONObject gameboardJson = new JSONObject();
+        gameboardJson.put("1.1",getGameBoardCell(1,1));
+        gameboardJson.put("1.2",getGameBoardCell(1,2));
+        gameboardJson.put("1.3",getGameBoardCell(1,3));
+        gameboardJson.put("2.1",getGameBoardCell(2,1));
+        gameboardJson.put("2.2",getGameBoardCell(2,2));
+        gameboardJson.put("2.3",getGameBoardCell(2,3));
+        gameboardJson.put("3.1",getGameBoardCell(3,1));
+        gameboardJson.put("3.2",getGameBoardCell(3,2));
+        gameboardJson.put("3.3",getGameBoardCell(3,3));
+
+        return gameboardJson.toJSONString();
     }
 
 

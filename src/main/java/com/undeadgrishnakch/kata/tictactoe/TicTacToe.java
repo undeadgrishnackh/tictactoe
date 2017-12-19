@@ -28,26 +28,43 @@ public class TicTacToe {
     private static final Logger logger = LogManager.getLogger(TicTacToe.class);
 
 
-    public TicTacToe() throws BadPlayer {
+    public TicTacToe() {
         logger.trace("Game creation...");
         this.gameBoard = new GameBoard();
         this.gameStatus = new GameStatus();
         this.gameRules = new GameRules();
-        this.players[0] = new Player("X", this);
-        this.players[1] = new Player("O", this);
-        this.actualPlayer = this.players[0];
+        createPlayersXO();
         logger.trace("Game created.");
     }
 
+
+
     //------------------------------------------------------ GAME BOARD
 
-    public String showGameBoard(){
-        return this.gameBoard.displayGameBoard();
+    public String showGameBoardASCII(){
+        return this.gameBoard.displayGameBoardASCII();
     }
 
-    public GameBoard getGameBoard() { return gameBoard; }
+    public String showGameBoardJSON() {
+        return this.gameBoard.displayGameBoardJSON();
+    }
+
+    public GameBoard getGameBoard() {
+        return gameBoard;
+    }
+
 
     //------------------------------------------------------ PLAYERS and ROUND
+
+    void createPlayersXO() {
+        try {
+            this.players[0] = new Player("X", this);
+            this.players[1] = new Player("O", this);
+        } catch (BadPlayer badPlayer) {
+            logger.trace(badPlayer.getMessage());
+        }
+        this.actualPlayer = this.players[0];
+    }
 
     private Player getPlayer( String playerName) throws BadPlayer {
         switch (playerName) {
@@ -83,9 +100,9 @@ public class TicTacToe {
         this.gameRules.paintMark(this.getPlayer(player),row,column);
         if (!this.gameRules.isGameOverAfterThisMove(this.getPlayer(player))){
             passGameToNextPlayer();
-            logger.debug("\n" + gameBoard.displayGameBoard() + getGameResult() + "\n");
+            logger.debug("\n" + gameBoard.displayGameBoardASCII() + getGameResult() + "\n");
         } else {
-            logger.debug("\n" + gameBoard.displayGameBoard() + getGameResult() + "\n" + "GAME OVER! :)\n");
+            logger.debug("\n" + gameBoard.displayGameBoardASCII() + getGameResult() + "\n" + "GAME OVER! :)\n");
         }
     }
 
@@ -106,5 +123,4 @@ public class TicTacToe {
             }
         }
     }
-
 }

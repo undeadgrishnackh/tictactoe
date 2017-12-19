@@ -1,5 +1,7 @@
 package com.undeadgrishnakch.kata.tictactoe.webapp;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -10,6 +12,7 @@ import java.util.Arrays;
 
 @SpringBootApplication
 public class TicTacToeApplication {
+    private static final Logger logger = LogManager.getLogger(TicTacToeApplication.class);
 
 	public static void main(String[] args) {
 		SpringApplication.run(TicTacToeApplication.class, args);
@@ -19,14 +22,13 @@ public class TicTacToeApplication {
 	public CommandLineRunner commandLineRunner(ApplicationContext ctx) {
 		return args -> {
 
-			System.out.println("Let's inspect the beans provided by Spring Boot:");
+			logger.trace("Let's inspect the beans provided by Spring Boot:");
 
 			String[] beanNames = ctx.getBeanDefinitionNames();
 			Arrays.sort(beanNames);
 			for (String beanName : beanNames) {
-				System.out.println(beanName);
+                logger.trace(beanName);
 			}
-
 		};
 	}
 }
