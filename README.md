@@ -54,9 +54,11 @@ To follow this path we need to understand that SCRUM, XP and DevOps are all link
 For this reason I'm used to close my classroom with this metaphor:
 "If with our code we're creating a powerful motorbike, the code coverage provide us the maximum speed of it. Reach 99% coverage doesn't mean that if we'll have an accident the motorbike will be with enough quality to protect us to survive."
 My tic tac toe for this reason is intentionally designed to be like a [TT island motorbike](https://www.youtube.com/watch?v=0xr1m9m8Puk); 95%+ coverage but without the necessary quality to say that it's "safety". I injected, with some tricks avoiding the refactoring and the code review, near 50% RedHotSpot ;)
-![HotSpot](https://github.com/undeadgrishnackh/tictactoe/pics/hotspot.png)
+
+![HotSpot](https://raw.githubusercontent.com/undeadgrishnackh/tictactoe/master/pics/hotspot.png)
 but the coverage and the tech debt in sonarqube are super good
-![Coverage](https://github.com/undeadgrishnackh/tictactoe/pics/coverage.png)
+
+![Coverage](https://raw.githubusercontent.com/undeadgrishnackh/tictactoe/master/pics/coverage.png)
 For this reason, as last brain effort before the salute, we have to save ["7 minutes and 26 seconds"](https://vimeo.com/79106557) to understand why without this triple link all our agile maturity is nothing.
 
 #### My thanks
