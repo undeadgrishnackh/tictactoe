@@ -34,6 +34,7 @@ public class TicTacToe {
         this.gameStatus = new GameStatus();
         this.gameRules = new GameRules();
         createPlayersXO();
+        this.actualPlayer = this.players[0];
         logger.trace("Game created.");
     }
 
@@ -56,25 +57,32 @@ public class TicTacToe {
 
     //------------------------------------------------------ PLAYERS and ROUND
 
-    void createPlayersXO() {
+    private void createPlayersXO() {
         try {
             this.players[0] = new Player("X", this);
             this.players[1] = new Player("O", this);
         } catch (BadPlayer badPlayer) {
             logger.trace(badPlayer.getMessage());
         }
-        this.actualPlayer = this.players[0];
     }
 
     private Player getPlayer( String playerName) throws BadPlayer {
         switch (playerName) {
             case "X":
-                return this.players[0];
+                return playerX();
             case "O":
-                return this.players[1];
+                return playerY();
             default:
                 throw new BadPlayer("The player " + playerName + " doesn't exit!");
         }
+    }
+
+    private Player playerY() {
+        return this.players[1];
+    }
+
+    private Player playerX() {
+        return this.players[0];
     }
 
     public Player getActualPlayer() {
@@ -82,9 +90,9 @@ public class TicTacToe {
     }
 
     private void passGameToNextPlayer(){
-        if (getActualPlayer() == this.players[0]) {
-            this.actualPlayer = this.players[1];
-        } else this.actualPlayer = this.players[0];
+        if (getActualPlayer() == playerX()) {
+            this.actualPlayer = playerY();
+        } else this.actualPlayer = playerX();
     }
 
     //------------------------------------------------------ GAME RESULT
