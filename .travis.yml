@@ -1,0 +1,28 @@
+language: java
+sudo: false
+install: true
+addons:
+  sonarcloud:
+    organization: undeadgrishnackh-github
+    token:
+      secure: 1ad4f5d9ab0933ba98ad2ebf03e082701f9e2951
+jdk:
+- oraclejdk8
+script:
+- mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent package sonar:sonar
+cache:
+  directories:
+  - "$HOME/.m2/repository"
+  - "$HOME/.sonar/cache"
+deploy:
+  - provider: pages
+    skip_cleanup: true
+    github_token: "$GITHUB_TOKEN"
+    on:
+      branch: master
+  - provider: heroku
+    app: damp-inlet-50606
+    api_key:
+      secure: "uXoS/ott0EA9cEH6wAiBmi9KbUVpYzpONHHdsbA5fuc2QR2h+tgn4UO2YXZfFV2RDq2ljq6tbo1NjOeF3O0JnIvJVu8O53abDt9wFQpnpGMq9eDpPOpkog4RpeCmtPPvLlo8CoQnVrDaZb6rmfVyDtB5YBpZHN50Z++pMS7FlQFU8uWMQvP4btkgl4u/oCEPO7pY2HM9E8oOvysN3mbN9ni5V+hv2o9uvqxo42rxW8tNkYZEx+4/D0S91f3DDTMMcT04byXwCFK7VeW0FqNUq99QiQpKLJJVH3n0FmFYJPvg7hA25p70nhDPl7V2wc59k5ovKj7z281eE2ck9iBFVnl3jKy24skYNA/yhxnOiNW2eWgBFNTlDjt7bkgKV7lXq7BE8ho9LwB+RbSXAcVfgNhtJeNpct9QQtVxp7y+qgeoZHY9yxkuP072smaRcBMJvuJXd2i0BU162rpRGMnuteBwVnCu3F3qGxzDsijPiEpAkhnMFPodaiNVn7caRC0fTfBxmk9XpAY3tsjxVRihK10JNG6t6olxsnM0B23ssQHPsGos1xQP+BY+a2kfjxOAzQaME+ZhnP469qeZ5B3osG0TFGW6Wab+KzCbAljjFgbkjNOngXezpuRYEzSrutyIMGttSxRGarJ0+hKPQD2AavJHVIvcnduDBU/582fvMHc="
+after_success:
+- mvn clean test jacoco:report coveralls:report
