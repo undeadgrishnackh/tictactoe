@@ -1,5 +1,5 @@
 [![Build Status][travisimg]][travislink]
-[![Quality Gate][qualityimg]][qualitylink]
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=undeadgrishnackh_tictactoe&metric=alert_status)](https://sonarcloud.io/dashboard?id=undeadgrishnackh_tictactoe)
 [![Coverage Status][coverageimg]][coveragelink]
 
 ![TIC TAC TOE][tictactoeimg]
@@ -71,8 +71,6 @@ If you liked this repo and the format of the training and you wanna improve your
 
 [travisimg]: https://travis-ci.org/undeadgrishnackh/tictactoe.svg?branch=master
 [travislink]: https://travis-ci.org/undeadgrishnackh/tictactoe
-[qualityimg]: https://sonarcloud.io/api/badges/gate?key=com.undeadgrishnackh:tictactoe
-[qualitylink]: https://sonarcloud.io/dashboard/index/com.undeadgrishnackh:tictactoe
 [coverageimg]: https://coveralls.io/repos/github/undeadgrishnackh/tictactoe/badge.svg?branch=master
 [coveragelink]: https://coveralls.io/github/undeadgrishnackh/tictactoe?branch=master
 [tictactoeimg]: http://is4.mzstatic.com/image/thumb/Purple111/v4/4f/70/d4/4f70d4cd-d270-f4ce-028d-17648632197b/source/175x175bb.jpg
