@@ -3,6 +3,7 @@
 [![Coverage Status][coverageimg]][coveragelink]
 [![CodeScene System Mastery](https://codescene.io/projects/8578/status-badges/system-mastery)](https://codescene.io/projects/8578)
 [![Known Vulnerabilities](https://snyk.io/test/github/undeadgrishnackh/minesweeper/badge.svg)](https://snyk.io/test/github/undeadgrishnackh/tictactoe/)
+[![BCH compliance](https://bettercodehub.com/edge/badge/undeadgrishnackh/tictactoe?branch=master)](https://bettercodehub.com/)
 
 ![TIC TAC TOE][tictactoeimg]
 
