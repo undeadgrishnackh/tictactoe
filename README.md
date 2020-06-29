@@ -1,8 +1,8 @@
 [![Build Status][travisimg]][travislink]
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=undeadgrishnackh_tictactoe&metric=alert_status)](https://sonarcloud.io/dashboard?id=undeadgrishnackh_tictactoe)
 [![Coverage Status][coverageimg]][coveragelink]
-[![CodeScene Code Health](https://codescene.io/projects/8578/status-badges/code-health)](https://codescene.io/projects/8578)
-
+[![CodeScene System Mastery](https://codescene.io/projects/8578/status-badges/system-mastery)](https://codescene.io/projects/8578)
+[![Known Vulnerabilities](https://snyk.io/test/github/undeadgrishnackh/minesweeper/badge.svg)](https://snyk.io/test/github/undeadgrishnackh/tictactoe/)
 
 ![TIC TAC TOE][tictactoeimg]
 
