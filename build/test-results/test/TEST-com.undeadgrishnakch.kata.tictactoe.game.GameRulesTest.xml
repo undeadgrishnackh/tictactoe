@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.undeadgrishnakch.kata.tictactoe.game.GameRulesTest" tests="6" skipped="0" failures="0" errors="0" timestamp="2020-07-02T16:14:09" hostname="Micheles-MacBook-Pro.local" time="0.011">
+  <properties/>
+  <testcase name="playerOMoveAfterTheGameEnd()" classname="com.undeadgrishnakch.kata.tictactoe.game.GameRulesTest" time="0.001"/>
+  <testcase name="playerXMoveBadRound()" classname="com.undeadgrishnakch.kata.tictactoe.game.GameRulesTest" time="0.0"/>
+  <testcase name="playerXMoveOverO()" classname="com.undeadgrishnakch.kata.tictactoe.game.GameRulesTest" time="0.0"/>
+  <testcase name="playerMoveOutOfGameBoard()" classname="com.undeadgrishnakch.kata.tictactoe.game.GameRulesTest" time="0.005"/>
+  <testcase name="playerOMoveBadRound()" classname="com.undeadgrishnakch.kata.tictactoe.game.GameRulesTest" time="0.001"/>
+  <testcase name="playerOMoveOverX()" classname="com.undeadgrishnakch.kata.tictactoe.game.GameRulesTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

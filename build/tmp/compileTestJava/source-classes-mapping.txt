@@ -1,0 +1,12 @@
+com/undeadgrishnakch/kata/tictactoe/game/GameBoardTest.java
+ com.undeadgrishnakch.kata.tictactoe.game.GameBoardTest
+com/undeadgrishnakch/kata/tictactoe/TicTacToeTest.java
+ com.undeadgrishnakch.kata.tictactoe.TicTacToeTest
+com/undeadgrishnakch/kata/tictactoe/webapp/TicTacToeWebApplicationIT.java
+ com.undeadgrishnakch.kata.tictactoe.webapp.TicTacToeWebApplicationIT
+com/undeadgrishnakch/kata/tictactoe/webapp/SpringJunit5Test.java
+ com.undeadgrishnakch.kata.tictactoe.webapp.SpringJunit5Test
+com/undeadgrishnakch/kata/tictactoe/game/GameRulesTest.java
+ com.undeadgrishnakch.kata.tictactoe.game.GameRulesTest
+com/undeadgrishnakch/kata/tictactoe/game/PlayerTest.java
+ com.undeadgrishnakch.kata.tictactoe.game.PlayerTest
