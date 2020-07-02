@@ -27,7 +27,6 @@ target/
 .flooignore
 .project
 .settings/
-.gradle/
 .vscode/
 .sts4-cache/
 .settings/
