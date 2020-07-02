@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.undeadgrishnakch.kata.tictactoe.TicTacToeTest" tests="8" skipped="0" failures="0" errors="0" timestamp="2020-07-02T16:14:09" hostname="Micheles-MacBook-Pro.local" time="0.005">
+<testsuite name="com.undeadgrishnakch.kata.tictactoe.TicTacToeTest" tests="8" skipped="0" failures="0" errors="0" timestamp="2020-07-02T18:11:51" hostname="Micheles-MacBook-Pro.local" time="0.011">
   <properties/>
   <testcase name="playerXWonWithDiagonal()" classname="com.undeadgrishnakch.kata.tictactoe.TicTacToeTest" time="0.001"/>
-  <testcase name="playerOWonWithDiagonal()" classname="com.undeadgrishnakch.kata.tictactoe.TicTacToeTest" time="0.0"/>
+  <testcase name="playerOWonWithDiagonal()" classname="com.undeadgrishnakch.kata.tictactoe.TicTacToeTest" time="0.001"/>
   <testcase name="draw()" classname="com.undeadgrishnakch.kata.tictactoe.TicTacToeTest" time="0.0"/>
-  <testcase name="playerXWonWithHorizontal()" classname="com.undeadgrishnakch.kata.tictactoe.TicTacToeTest" time="0.001"/>
-  <testcase name="playerXWonWithVertical()" classname="com.undeadgrishnakch.kata.tictactoe.TicTacToeTest" time="0.0"/>
+  <testcase name="playerXWonWithHorizontal()" classname="com.undeadgrishnakch.kata.tictactoe.TicTacToeTest" time="0.0"/>
+  <testcase name="playerXWonWithVertical()" classname="com.undeadgrishnakch.kata.tictactoe.TicTacToeTest" time="0.001"/>
   <testcase name="playerOWonWithHorizontal()" classname="com.undeadgrishnakch.kata.tictactoe.TicTacToeTest" time="0.001"/>
   <testcase name="playerOWonWithVertical()" classname="com.undeadgrishnakch.kata.tictactoe.TicTacToeTest" time="0.0"/>
-  <testcase name="botVsBot()" classname="com.undeadgrishnakch.kata.tictactoe.TicTacToeTest" time="0.001"/>
+  <testcase name="botVsBot()" classname="com.undeadgrishnakch.kata.tictactoe.TicTacToeTest" time="0.002"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

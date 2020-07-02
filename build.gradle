@@ -7,6 +7,8 @@ plugins {
     id 'idea' // optional (to generate IntelliJ IDEA project files)
     id 'org.springframework.boot' version '2.2.2.RELEASE'
     id 'io.spring.dependency-management' version '1.0.8.RELEASE'
+    id 'jacoco'
+    id "org.sonarqube" version "2.8"
 }
 
 java {
@@ -72,5 +74,16 @@ test {
     useJUnitPlatform()
     testLogging {
         events "passed", "skipped", "failed"
+    }
+    finalizedBy jacocoTestReport // report is always generated after tests run
+}
+
+jacocoTestReport {
+    dependsOn test // tests are required to run before generating the report
+}
+
+sonarqube {
+    properties {
+        property "sonar.projectKey", "undeadgrishnackh_tictactoe"
     }
 }
