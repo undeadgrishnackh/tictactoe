@@ -31,3 +31,4 @@ target/
 .sts4-cache/
 .settings/
 build/*
+lib/
