@@ -1,4 +1,4 @@
-[![Build Status][travisimg]][travislink]
+[![Build Status](https://travis-ci.org/undeadgrishnackh/tictactoe.svg?branch=master)](https://travis-ci.org/undeadgrishnackh/tictactoe)
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=undeadgrishnackh_tictactoe&metric=alert_status)](https://sonarcloud.io/dashboard?id=undeadgrishnackh_tictactoe)
 [![Coverage Status][coverageimg]][coveragelink]
 [![CodeScene System Mastery](https://codescene.io/projects/8578/status-badges/system-mastery)](https://codescene.io/projects/8578)
@@ -72,8 +72,6 @@ Ad the end of this repository, I wanna share with you my thanks to:
 
 If you liked this repo and the format of the training and you wanna improve your team practices in Agile, XP and DevOps, I'm available for consultancy. Ping me on my [twitter](https://twitter.com/MicheleBrissoni).
 
-[travisimg]: https://travis-ci.org/undeadgrishnackh/tictactoe.svg?branch=master
-[travislink]: https://travis-ci.org/undeadgrishnackh/tictactoe
 [coverageimg]: https://coveralls.io/repos/github/undeadgrishnackh/tictactoe/badge.svg?branch=master
 [coveragelink]: https://coveralls.io/github/undeadgrishnackh/tictactoe?branch=master
 [tictactoeimg]: http://is4.mzstatic.com/image/thumb/Purple111/v4/4f/70/d4/4f70d4cd-d270-f4ce-028d-17648632197b/source/175x175bb.jpg
