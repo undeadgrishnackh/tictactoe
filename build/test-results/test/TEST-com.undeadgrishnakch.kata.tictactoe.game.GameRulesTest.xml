@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.undeadgrishnakch.kata.tictactoe.game.GameRulesTest" tests="6" skipped="0" failures="0" errors="0" timestamp="2020-07-02T18:11:51" hostname="Micheles-MacBook-Pro.local" time="0.017">
+<testsuite name="com.undeadgrishnakch.kata.tictactoe.game.GameRulesTest" tests="6" skipped="0" failures="0" errors="0" timestamp="2020-07-09T10:45:30" hostname="Micheles-MacBook-Pro.local" time="0.012">
   <properties/>
   <testcase name="playerOMoveAfterTheGameEnd()" classname="com.undeadgrishnakch.kata.tictactoe.game.GameRulesTest" time="0.002"/>
-  <testcase name="playerXMoveBadRound()" classname="com.undeadgrishnakch.kata.tictactoe.game.GameRulesTest" time="0.002"/>
-  <testcase name="playerXMoveOverO()" classname="com.undeadgrishnakch.kata.tictactoe.game.GameRulesTest" time="0.002"/>
-  <testcase name="playerMoveOutOfGameBoard()" classname="com.undeadgrishnakch.kata.tictactoe.game.GameRulesTest" time="0.007"/>
+  <testcase name="playerXMoveBadRound()" classname="com.undeadgrishnakch.kata.tictactoe.game.GameRulesTest" time="0.001"/>
+  <testcase name="playerXMoveOverO()" classname="com.undeadgrishnakch.kata.tictactoe.game.GameRulesTest" time="0.001"/>
+  <testcase name="playerMoveOutOfGameBoard()" classname="com.undeadgrishnakch.kata.tictactoe.game.GameRulesTest" time="0.005"/>
   <testcase name="playerOMoveBadRound()" classname="com.undeadgrishnakch.kata.tictactoe.game.GameRulesTest" time="0.001"/>
   <testcase name="playerOMoveOverX()" classname="com.undeadgrishnakch.kata.tictactoe.game.GameRulesTest" time="0.001"/>
   <system-out><![CDATA[]]></system-out>

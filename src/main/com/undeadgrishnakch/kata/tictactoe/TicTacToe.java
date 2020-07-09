@@ -104,13 +104,13 @@ public class TicTacToe {
 
     //------------------------------------------------------ GAME MOVEMENTS
     public void paintMark(String player, int row, int column) throws BadMove, BadPlayer, GameOver {
-        logger.trace("Player " + player + " is moving to r="+row+" c="+column);
+        logger.trace("Player {} is moving to r={} c={}", player, row, column);
         this.gameRules.paintMark(this.getPlayer(player), row, column);
         if (!this.gameRules.isGameOverAfterThisMove(this.getPlayer(player))){
             passGameToNextPlayer();
-            logger.debug("\n" + gameBoard.displayGameBoardASCII() + getGameResult() + "\n");
+            logger.debug("\n {} {} \n", gameBoard.displayGameBoardASCII(), getGameResult());
         } else {
-            logger.debug("\n" + gameBoard.displayGameBoardASCII() + getGameResult() + "\n" + "GAME OVER! :)\n");
+            logger.debug("\n {} {} \n GAME OVER! :)\n", gameBoard.displayGameBoardASCII(), getGameResult());
         }
     }
 
@@ -123,7 +123,7 @@ public class TicTacToe {
         logger.debug("Game BOT VS BOT");
         for (; gameRound < 9; gameRound++) {
             try {
-                logger.debug("Round " + gameRound);
+                logger.debug("Round {}", gameRound);
                 this.getActualPlayer().moveRandom();
             } catch (GameOver gameOverExc) {
                 logger.debug("GAME OVER trapped. Exit signal.");

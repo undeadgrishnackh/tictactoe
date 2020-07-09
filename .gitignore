@@ -30,5 +30,6 @@ target/
 .vscode/
 .sts4-cache/
 .settings/
-build/*
+build/
 lib/
+.gradle/
