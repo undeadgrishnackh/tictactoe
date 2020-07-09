@@ -82,6 +82,11 @@ test {
 }
 
 jacocoTestReport {
+    reports {
+        xml.enabled true
+        csv.enabled true
+        html.destination file("${buildDir}/reports/jacoco/html")
+    }
     dependsOn test // tests are required to run before generating the report
 }
 
