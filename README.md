@@ -1,4 +1,5 @@
 [![Build Status](https://travis-ci.org/undeadgrishnackh/tictactoe.svg?branch=master)](https://travis-ci.org/undeadgrishnackh/tictactoe)
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/ed1f64d6ed174dcda731b564b2ee605d)](https://app.codacy.com/manual/undeadgrishnackh/tictactoe?utm_source=github.com&utm_medium=referral&utm_content=undeadgrishnackh/tictactoe&utm_campaign=Badge_Grade_Settings)
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=undeadgrishnackh_tictactoe&metric=alert_status)](https://sonarcloud.io/dashboard?id=undeadgrishnackh_tictactoe)
 [![Coverage Status][coverageimg]][coveragelink]
 [![CodeScene System Mastery](https://codescene.io/projects/8578/status-badges/system-mastery)](https://codescene.io/projects/8578)
